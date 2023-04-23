@@ -23,10 +23,6 @@ class AdminMenuServiceProvider extends ServiceProvider {
                     ->data('icon', 'security')
                     ->activateOnUrls($this->routeWildcard('appshell.role.index'))
                     ->allowIfUserCan('list roles');
-            $users
-                    ->addSubItem('settings', __('Settings'), ['route' => 'appshell.settings.index'])
-                    ->data('icon', 'settings')
-                    ->allowIfUserCan('list settings');
         }
     }
 
