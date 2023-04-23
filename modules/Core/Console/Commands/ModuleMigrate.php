@@ -27,7 +27,11 @@ class ModuleMigrate extends Command {
 
             // Run seeders if --seed option is present
             if ($this->option('seed')) {
+                if ($moduleName) {
+                    $this->call('core:module:seed' . $moduleName);
+                }
                 $this->call('db:seed');
+                $this->call('core:module:seed');
             }
         }
     }

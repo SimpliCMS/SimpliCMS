@@ -11,8 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(\Konekt\Address\Seeds\Countries::class);
-        $this->call(\Konekt\Address\Seeds\StatesOfUsa::class);
-        $this->call(\Konekt\Address\Seeds\StatesOfGermany::class);
+
     }
 }
