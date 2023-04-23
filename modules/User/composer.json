@@ -1,0 +1,23 @@
+{
+    "name": "simplicms/user",
+    "description": "",
+    "authors": [
+        {
+            "name": "Joshua Webb",
+            "email": "joshwebb84@outlook.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\User\\": ""
+        }
+    }
+}

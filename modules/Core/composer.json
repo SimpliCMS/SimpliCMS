@@ -1,0 +1,26 @@
+{
+    "name": "simplicms/core",
+    "description": "",
+    "authors": [
+        {
+            "name": "Joshua Webb",
+            "email": "joshwebb84@outlook.com"
+        }
+    ],
+    "require": {
+        "shipu/themevel": "^3.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Core\\": ""
+        }
+    }
+}

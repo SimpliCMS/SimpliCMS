@@ -1,0 +1,26 @@
+{
+    "name": "simplicms/admin",
+    "description": "",
+    "authors": [
+        {
+            "name": "Joshua Webb",
+            "email": "joshwebb84@outlook.com"
+        }
+    ],
+    "require": {
+        "konekt/appshell": "^3.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Admin\\": ""
+        }
+    }
+}
