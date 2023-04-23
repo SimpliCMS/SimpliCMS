@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Core\Resources\Database\Seeds;
+namespace Modules\Admin\Resources\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
-class Menus extends Seeder
+class AdminMenus extends Seeder
 {
     public function run()
     {

@@ -4,7 +4,7 @@
         Dashboard
     </a>
 </a>-->
-@foreach(Menu::get('appshell')->items->roots()->sortBy('order') as $item)
+@foreach(Menu::get('admin')->items->roots()->sortBy('order') as $item)
 @if ($item->hasLink() && $item->isAllowed())
 <a class="nav-item {{ $item->attr('class') }}">
     <a class="nav-link {{ $item->link->attr('class') }}" href="{!! $item->url() !!}">

@@ -4,7 +4,7 @@ namespace Modules\Shop\Resources\Database\Seeds;
 
 use Illuminate\Database\Seeder;
 
-class Menus extends Seeder
+class ShopMenus extends Seeder
 {
     public function run()
     {
