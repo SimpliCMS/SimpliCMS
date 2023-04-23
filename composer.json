@@ -29,7 +29,8 @@
         "classmap": [
             "app/database/seeds",
             "modules/*/resources/database/seeds",
-            "app/database/factories"
+            "app/database/factories",
+            "modules/*/resources/database/factories"
         ],
         "psr-4": {
             "App\\": "app/",

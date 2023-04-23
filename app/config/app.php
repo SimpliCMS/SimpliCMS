@@ -153,7 +153,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         Modules\Core\Providers\EventServiceProvider::class,
         Modules\Core\Providers\RouteServiceProvider::class,
-        Modules\Core\Providers\CoreSettingsServiceProvider::class,
+        Modules\Admin\Providers\AdminSettingsServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------

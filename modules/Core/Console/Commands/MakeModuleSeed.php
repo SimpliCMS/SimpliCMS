@@ -36,15 +36,18 @@ class MakeModuleSeed extends Command {
         // Generate the migration file content using a stub
         $stubPath = base_path('/modules/Core/Console/Commands/stubs/seed.stub');
         $stubContent = File::get($stubPath);
-        
+
         $string = $stubContent;
-        $search = array('{{moduleName}}','{{seedName}}');
+        $search = array('{{moduleName}}', '{{seedName}}');
         $replace = array($moduleName, $seedName);
         $stubContent = str_replace($search, $replace, $string);
 
         // Save the migration file
         $filePath = $seedsPath . '/' . $fileName;
         File::put($filePath, $stubContent);
+
+        $output = null;
+        system('composer dump-autoload', $output);
 
         $this->info("Seed created successfully: {$fileName}");
     }

@@ -3,6 +3,7 @@
 namespace Modules\Core\Providers;
 
 use Konekt\Concord\BaseBoxServiceProvider;
+use Konekt\AppShell\Providers\SettingsProvider;
 use Illuminate\Support\Facades\DB;
 use Schema;
 
@@ -46,7 +47,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
         foreach ($moduleProviders as $moduleProvider) {
             $this->app->concord->registerModule($moduleProvider);
         }
-
+        $this->app->register(CoreSettingsServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
     }

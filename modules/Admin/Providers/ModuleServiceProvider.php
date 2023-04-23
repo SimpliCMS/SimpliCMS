@@ -3,6 +3,8 @@
 namespace Modules\Admin\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
+use Konekt\AppShell\Providers\SettingsProvider;
+use Schema;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider {
 
@@ -28,7 +30,11 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
             ]
                 ]
         );
+
+//        $this->app->bind(AppShellProvider::class, AppShellServiceProvider::class);
+        $this->app->bind(SettingsProvider::class, AdminSettingsServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(AdminMenuServiceProvider::class);
         $this->adminViewPaths();
         $this->appshellViewPaths();
     }

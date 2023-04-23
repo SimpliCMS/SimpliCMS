@@ -17,7 +17,7 @@ class CoreSettingsServiceProvider extends ServiceProvider {
 
             $settingsRegistry->addByKey('site.description');
             $settingsRegistry->addByKey('site.keywords');
-
+           
             $themesDirectory = base_path('themes');
             $themes = [];
             foreach (new \DirectoryIterator($themesDirectory) as $fileInfo) {
