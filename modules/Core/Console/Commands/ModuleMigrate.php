@@ -29,9 +29,10 @@ class ModuleMigrate extends Command {
             if ($this->option('seed')) {
                 if ($moduleName) {
                     $this->call('core:module:seed' . $moduleName);
+                } else {
+                    $this->call('db:seed');
+                    $this->call('core:module:seed');
                 }
-                $this->call('db:seed');
-                $this->call('core:module:seed');
             }
         }
     }
