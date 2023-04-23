@@ -22,7 +22,6 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      */
     public function boot() {
         $this->app->register(RouteServiceProvider::class);
-
         $this->app->concord->registerModule(\Vanilo\Foundation\Providers\ModuleServiceProvider::class,
                 $config = [
             'image' => [
@@ -69,6 +68,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         $this->app->concord->registerModule(\Vanilo\Paypal\Providers\ModuleServiceProvider::class);
         $this->app->concord->registerModule(\Vanilo\Simplepay\Providers\ModuleServiceProvider::class);
         $this->app->concord->registerModule(\Vanilo\Stripe\Providers\ModuleServiceProvider::class);
+        $this->app->register(AdminMenuServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
     }

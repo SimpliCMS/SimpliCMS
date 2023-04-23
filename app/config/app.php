@@ -154,6 +154,7 @@ return [
         Modules\Core\Providers\EventServiceProvider::class,
         Modules\Core\Providers\RouteServiceProvider::class,
         Modules\Admin\Providers\AdminSettingsServiceProvider::class,
+        Modules\Admin\Providers\AdminMenuServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------

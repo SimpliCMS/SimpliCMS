@@ -1,10 +1,10 @@
 @unless(Auth::guest())
-<a class="nav-item">
+<!--<a class="nav-item">
     <a class="nav-link" href="{{ route('admin.index') }}">
         Dashboard
     </a>
-</a>
-@foreach($appshellMenu->items->roots() as $item)
+</a>-->
+@foreach(Menu::get('appshell')->items->roots()->sortBy('order') as $item)
 @if ($item->hasLink() && $item->isAllowed())
 <a class="nav-item {{ $item->attr('class') }}">
     <a class="nav-link {{ $item->link->attr('class') }}" href="{!! $item->url() !!}">

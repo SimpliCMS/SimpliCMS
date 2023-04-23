@@ -48,6 +48,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
             $this->app->concord->registerModule($moduleProvider);
         }
         $this->app->register(CoreSettingsServiceProvider::class);
+        $this->app->register(AdminMenuServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
     }
