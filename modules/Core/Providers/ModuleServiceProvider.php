@@ -16,7 +16,11 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
     public function boot() {
         // Load default modules
         $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class);
-        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class);
+        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class,
+                $config = [
+            'migrations' => true
+                ],
+        );
 
         // Dynamically load additionally installed modules
         $modulesPath = base_path('modules');
