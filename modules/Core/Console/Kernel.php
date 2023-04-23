@@ -16,6 +16,8 @@ class Kernel extends ConsoleKernel {
         //
         \Modules\Core\Console\Commands\MakeModuleCommand::class,
         \Modules\Core\Console\Commands\ModuleMigrate::class,
+         \Modules\Core\Console\Commands\MakeModuleMigration::class,
+        \Modules\Core\Console\Commands\MakeModuleSeed::class,
     ];
 
     /**
