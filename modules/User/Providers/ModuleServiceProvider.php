@@ -30,7 +30,12 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         $moduleLower = lcfirst('User');
         if (Schema::hasTable('settings')) {
             $setting = DB::table('settings')->where('id', 'site.theme')->first();
-            $currentTheme = $setting->value;
+
+            if ($setting) {
+                $currentTheme = $setting->value;
+            } else {
+                $currentTheme = 'default';
+            }
         } else {
             $currentTheme = 'default';
         }

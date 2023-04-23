@@ -77,10 +77,16 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         $moduleLower = lcfirst('Shop');
         if (Schema::hasTable('settings')) {
             $setting = DB::table('settings')->where('id', 'site.theme')->first();
-            $currentTheme = $setting->value;
+
+            if ($setting) {
+                $currentTheme = $setting->value;
+            } else {
+                $currentTheme = 'default';
+            }
         } else {
             $currentTheme = 'default';
         }
+
         $views = [
             module_Viewpath('Shop', $currentTheme),
             base_path("themes/$currentTheme/views/modules/Shop"),

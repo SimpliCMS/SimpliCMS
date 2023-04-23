@@ -16,11 +16,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
     public function boot() {
         // Load default modules
         $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class);
-        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class,
-                $config = [
-            'migrations' => true
-                ],
-        );
+        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class);
 
         // Dynamically load additionally installed modules
         $modulesPath = base_path('modules');
@@ -59,7 +55,12 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
         $moduleLower = lcfirst('Core');
         if (Schema::hasTable('settings')) {
             $setting = DB::table('settings')->where('id', 'site.theme')->first();
-            $currentTheme = $setting->value;
+
+            if ($setting) {
+                $currentTheme = $setting->value;
+            } else {
+                $currentTheme = 'default';
+            }
         } else {
             $currentTheme = 'default';
         }
