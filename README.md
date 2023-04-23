@@ -1,1 +1,1 @@
-# SimpliCMS
+# SimpliCMS CMS based on the Laravel Framework modular and extensible by design
