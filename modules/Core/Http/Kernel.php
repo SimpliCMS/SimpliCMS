@@ -20,6 +20,7 @@ class Kernel extends HttpKernel {
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \Modules\Core\Http\Middleware\TrustProxies::class,
         \Modules\Core\Http\Middleware\ThemeMiddleware::class,
+//        \Modules\Core\Http\Middleware\GenerateMenus::class,
     ];
 
     /**

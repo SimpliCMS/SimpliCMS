@@ -39,6 +39,10 @@
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
                 </div>
                 <div class="form-group">
+                    <label for="label">Permission access</label>
+                    <input type="text" name="permission" id="permission" class="form-control" value="{{ old('permission') }}">
+                </div>
+                <div class="form-group">
                     <label for="url">URL</label>
                     <input type="text" name="url" id="url" class="form-control" value="{{ old('url') }}" required>
                 </div>

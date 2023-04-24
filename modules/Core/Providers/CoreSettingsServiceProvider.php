@@ -6,13 +6,16 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Konekt\Gears\Defaults\SimpleSetting;
+use Konekt\Gears\Facades\Settings;
 use Schema;
 use Menu;
+use Config;
 
 class CoreSettingsServiceProvider extends ServiceProvider {
 
     public function boot() {
         if (Schema::hasTable('settings')) {
+            Config::set('app.name',Settings::get('appshell.ui.name'));
             $settingsRegistry = $this->app['gears.settings_registry'];
 
             $settingsRegistry->addByKey('site.description');

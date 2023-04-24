@@ -19,14 +19,20 @@ class MenuItemController extends Controller {
     public function store(RequestFacde $request) {
         $name = RequestFacde::input('name');
         $url = RequestFacde::input('url');
+        $permission = RequestFacde::input('url');
         $is_internal = RequestFacde::input('is_internal');
         $menu_id = RequestFacde::input('menu_id');
         $parent_id = RequestFacde::input('parent_id');
+        if (is_null($is_internal)){
+            $is_internal = '0';
+        }
         MenuItem::create([
             "name" => $name,
             "url" => $url,
+            "permission" => $permission,
             "menu_id" => $menu_id,
-            "parent_id" => $parent_id
+            "parent_id" => $parent_id,
+            'is_internal' => $is_internal
         ]);
 
         return redirect(route('menus.show', $menu_id));
@@ -53,8 +59,8 @@ class MenuItemController extends Controller {
     }
 
     public function destroy(MenuItem $menuItem, $redirectid) {
-        $menu = $menuItem->menu;
-        $menuItem->delete();
+        $menu = $menuItem->id;
+        $menu->delete();
 
         return redirect()->route('menus.show', $redirectid);
     }

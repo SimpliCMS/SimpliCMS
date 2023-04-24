@@ -18,3 +18,7 @@ Route::get('/', 'HomeController@index')->name('home');
 //   $shortcut = base_path('app/resources/views/vendor/appshell');
 //   symlink($target, $shortcut);
 //});
+
+    Route::get('/menutest', function () {
+        echo Menu::get("Main Menu")->items;
+    });

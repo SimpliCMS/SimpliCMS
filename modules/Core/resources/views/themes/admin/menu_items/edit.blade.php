@@ -43,6 +43,10 @@
                     <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $menuSubItem->name) }}" required>
                 </div>
                 <div class="form-group">
+                    <label for="label">Permission access</label>
+                    <input type="text" name="permission" id="permission" class="form-control" value="{{ old('permission', $menuSubItem->permission) }}">
+                </div>
+                <div class="form-group">
                     <label for="url">URL</label>
                     <div class="form-check">
                         <input type="radio" name="is_internal" id="url_internal" class="form-check-input" value="1" {{ $menuSubItem->is_internal ? 'checked' : '' }}>

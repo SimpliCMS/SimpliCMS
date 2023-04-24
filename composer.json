@@ -37,7 +37,8 @@
             "Modules\\": "modules/"
         },
         "files": [
-            "modules/Core/Helpers/helper.php"           
+            "modules/Core/Helpers/Helper.php",
+            "modules/Core/Helpers/helper.php" 
         ]
     },
     "autoload-dev": {
