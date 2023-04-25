@@ -4,6 +4,8 @@ namespace Modules\Shop\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Vanilo\Cart\Facades\Cart;
+use TorMorten\Eventy\Facades\Events as Eventy;
 use Schema;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider {
@@ -71,6 +73,11 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         $this->app->register(AdminMenuServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
+        Eventy::addAction('menu.nameAfter', function ($item) {
+            if ($item->name == 'Cart' && Cart::isNotEmpty()) {
+                echo '<span class="badge badge-pill badge-secondary">'.Cart::itemCount().'</span>';
+            }
+        }, 20, 1);
     }
 
     public function ViewPaths() {

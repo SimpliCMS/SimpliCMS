@@ -8,7 +8,8 @@
         }
     ],
     "require": {
-        "shipu/themevel": "^3.0"
+        "shipu/themevel": "^3.0",
+        "tormjens/eventy": "^0.8"
     },
     "extra": {
         "laravel": {
