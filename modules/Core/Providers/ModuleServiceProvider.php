@@ -49,6 +49,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
         }
         $this->app->register(CoreSettingsServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
+        $this->app->register(PluginServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
     }

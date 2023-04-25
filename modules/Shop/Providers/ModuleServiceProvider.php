@@ -71,13 +71,9 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         $this->app->concord->registerModule(\Vanilo\Simplepay\Providers\ModuleServiceProvider::class);
         $this->app->concord->registerModule(\Vanilo\Stripe\Providers\ModuleServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
+        $this->app->register(PluginServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
-        Eventy::addAction('menu.nameAfter', function ($item) {
-            if ($item->name == 'Cart' && Cart::isNotEmpty()) {
-                echo '<span class="badge badge-pill badge-secondary">'.Cart::itemCount().'</span>';
-            }
-        }, 20, 1);
     }
 
     public function ViewPaths() {

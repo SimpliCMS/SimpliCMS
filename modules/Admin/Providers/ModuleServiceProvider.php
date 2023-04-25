@@ -34,6 +34,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
 //        $this->app->bind(AppShellProvider::class, AppShellServiceProvider::class);
         $this->app->bind(SettingsProvider::class, AdminSettingsServiceProvider::class);
         $this->app->register(RouteServiceProvider::class);
+        $this->app->register(PluginServiceProvider::class);
         $this->adminViewPaths();
         $this->appshellViewPaths();
     }
