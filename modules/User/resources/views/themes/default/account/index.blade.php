@@ -9,16 +9,16 @@
                 <div class="card-header">{{ __('Account Details') }}</div>
 
                 <div class="card-body">
-                    <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST">
+                    <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST" class="needs-validation" novalidate>
                         @csrf
                         @method('PUT')
                         <div class="form-floating mb-3 row">
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" placeholder="Name" required autofocus>
                             <label for="name">{{ __('Name') }}</label>
                             @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name') }}
+                            </div>
                             @endif
                         </div>
 
@@ -26,9 +26,9 @@
                             <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" placeholder="name@example.com" required>
                             <label for="email">{{ __('E-Mail Address') }}</label>
                             @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
                             @endif
                         </div>
 

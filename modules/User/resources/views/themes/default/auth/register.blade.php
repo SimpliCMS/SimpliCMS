@@ -8,16 +8,16 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
                         @csrf
 
                         <div class="form-floating mb-3 row">
                             <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="First and Last name" required autofocus>
                             <label for="name">{{ __('Name') }}</label>
                             @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name') }}
+                            </div>
                             @endif
                         </div>
 
@@ -25,9 +25,9 @@
                             <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="name@example.com" required>
                             <label for="email">{{ __('E-Mail Address') }}</label>
                             @if ($errors->has('email'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                                {{ $errors->first('email') }}
+                            </div>
                             @endif
 
                         </div>
@@ -36,9 +36,9 @@
                             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
                             <label for="password">{{ __('Password') }}</label>
                             @if ($errors->has('password'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                            <div class="invalid-feedback">
+                               {{ $errors->first('password') }}
+                            </div>
                             @endif
 
                         </div>
