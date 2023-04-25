@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\{{moduleName}}\Providers;
+namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class {{providerName}} extends ServiceProvider
+class PluginServiceProvider extends ServiceProvider
 {
     
     /**
