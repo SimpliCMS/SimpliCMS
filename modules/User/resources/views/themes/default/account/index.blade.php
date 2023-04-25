@@ -9,45 +9,35 @@
                 <div class="card-header">{{ __('Account Details') }}</div>
 
                 <div class="card-body">
-                        <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST">
-                            @csrf
-                            @method('PUT')
-                            <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                    <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-floating mb-3 row">
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" placeholder="Name" required autofocus>
+                            <label for="name">{{ __('Name') }}</label>
+                            @if ($errors->has('name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                            @endif
+                        </div>
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autofocus>
+                        <div class="form-floating mb-3 row">
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" placeholder="name@example.com" required>
+                            <label for="email">{{ __('E-Mail Address') }}</label>
+                            @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                            @endif
+                        </div>
 
-                                    @if ($errors->has('name'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required>
-
-                                    @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-
-                            <div class="form-group row mb-0">
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        {{ __('Update') }}
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        <div class="input-group row mb-0">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                {{ __('Update') }}
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

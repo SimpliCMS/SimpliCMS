@@ -5,7 +5,7 @@
     route('product.index')
       }}">
     <div class="card-header">Filters
-        <button class="btn btn-sm btn-primary float-right pt-0 pb-0">Apply</button>
+        <button class="btn btn-sm btn-primary float-right">Apply</button>
     </div>
     <ul class="list-group list-group-flush">
         @foreach($properties as $property)

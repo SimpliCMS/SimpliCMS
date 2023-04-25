@@ -15,10 +15,12 @@
 
         <!-- Styles -->
         <link href="{{ themes('css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ themes('css/app.css') }}" rel="stylesheet">
+        <link href="{{ themes('css/custom.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <nav class="navbar navbar-expand-lg navbar-dark navbar-simplicms">
                 <div class="container">
                     <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'SimpliCMS') }}</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +43,7 @@
                 </div>
             </nav>
 
-            <main class="py-4">
+            <main class="py-2">
 
                 <div class="container">
                     @yield('categories-menu')
