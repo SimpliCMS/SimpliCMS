@@ -20,6 +20,7 @@ class Kernel extends ConsoleKernel {
          \Modules\Core\Console\Commands\MakeModuleMigration::class,
         \Modules\Core\Console\Commands\MakeModuleSeed::class,
         \Modules\Core\Console\Commands\MakeModuleController::class,
+        \Modules\Core\Console\Commands\MakeModuleProvider::class,
     ];
 
     /**
