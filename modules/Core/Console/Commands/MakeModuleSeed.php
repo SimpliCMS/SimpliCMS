@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\File;
 
 class MakeModuleSeed extends Command {
 
-    protected $signature = 'core:module:make:seed {moduleName : The name of the module} {seedName : The name of the migration}';
+    protected $signature = 'core:module:make:seed {moduleName : The name of the module} {seedName : The name of the seeder}';
     protected $description = 'Create a new seed file for a module';
 
     public function handle() {
@@ -24,16 +24,16 @@ class MakeModuleSeed extends Command {
             return;
         }
 
-        // Create the migrations directory if it doesn't exist
+        // Create the seeds directory if it doesn't exist
         $seedsPath = base_path("modules/{$moduleName}/resources/database/seeds");
         if (!File::isDirectory($seedsPath)) {
             File::makeDirectory($seedsPath, 0755, true);
         }
 
-        // Generate the migration file name
+        // Generate the seed file name
         $fileName = $seedName . '.php';
 
-        // Generate the migration file content using a stub
+        // Generate the seed file content using a stub
         $stubPath = base_path('/modules/Core/Console/Commands/stubs/seed.stub');
         $stubContent = File::get($stubPath);
 
@@ -42,7 +42,7 @@ class MakeModuleSeed extends Command {
         $replace = array($moduleName, $seedName);
         $stubContent = str_replace($search, $replace, $string);
 
-        // Save the migration file
+        // Save the seed file
         $filePath = $seedsPath . '/' . $fileName;
         File::put($filePath, $stubContent);
 

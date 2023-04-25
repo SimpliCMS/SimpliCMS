@@ -93,6 +93,11 @@ class MakeModuleCommand extends Command {
         $manifeststub = str_replace('{module}', $moduleName, $manifeststub);
         File::put($modulePath . '/resources/manifest.php', $manifeststub);
 
+        // Create the module composer file using the stub
+        $composerstub = $this->getStub('composer.stub');
+        $composerstub = str_replace('{module}', $moduleName, $composerstub);
+        File::put($modulePath . '/composer.json', $composerstub);
+        
         // Output success message
         $this->info("Module [$moduleName] created successfully.");
     }
