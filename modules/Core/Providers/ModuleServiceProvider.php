@@ -67,10 +67,10 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
             $currentTheme = 'default';
         }
         $views = [
-            module_Viewpath('Core', $currentTheme),
             base_path("themes/$currentTheme/views/modules/Core"),
-            module_Viewpath('Core', 'default'),
+            module_Viewpath('Core', $currentTheme),
             base_path("themes/default/views/modules/Core"),
+            module_Viewpath('Core', 'default'),
             base_path("resources/views/modules/Core"),
         ];
 

@@ -41,10 +41,10 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
             $currentTheme = 'default';
         }
         $views = [
-            module_Viewpath('User', $currentTheme),
             base_path("themes/$currentTheme/views/modules/User"),
-            module_Viewpath('User', 'default'),
+            module_Viewpath('User', $currentTheme),
             base_path("themes/default/views/modules/User"),
+            module_Viewpath('User', 'default'),
             base_path("resources/views/modules/User"),
         ];
 

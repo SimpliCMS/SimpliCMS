@@ -11,6 +11,10 @@
   |
  */
 
+Route::get('account', 'UserController@account')->name('user.account');
+Route::get('account/security', 'UserController@accountSecurity')->name('user.account.security');
+Route::put('update/{id}', 'UserController@update')->name('user.update');
+
 // Authentication Routes...
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');

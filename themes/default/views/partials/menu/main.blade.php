@@ -3,10 +3,10 @@
 <li class="nav-item @if($item->children->count() > 0) dropdown @endif">
     @if($item->name == 'Admin')
     @role('admin')
-    <a class="nav-link @if($item->children->count() > 0) dropdown-toggle @endif" href="@if($item->is_internal == 1){{ route($item->url) }}@else{{ $item->url }}@endif" id="{{ $item->name }}" @if($item->children->count() > 0) role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @endif>{{ $item->name }}</a>
+    <a class="nav-link @if($item->children->count() > 0) dropdown-toggle @endif" href="@if($item->is_internal == 1){{ route($item->url) }}@else{{ $item->url }}@endif" id="{{ $item->name }}" @if($item->children->count() > 0) role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @endif>{{ $item->name }}</a>
     @endrole
     @else
-    <a class="nav-link @if($item->children->count() > 0) dropdown-toggle @endif" href="@if($item->is_internal == 1){{ route($item->url) }}@else{{ $item->url }}@endif" id="{{ $item->name }}" @if($item->children->count() > 0) role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @endif @if($item->name == 'Logout') onclick="event.preventDefault(); document.getElementById('logout-form').submit();" @else @endif>@if($item->name == 'Account Menu'){{ Auth::user()->name }} <img src="{{ avatar_image_url(Auth::user(), 20) }}" class="rounded-circle"> @elseif($item->name == 'Cart'){{$item->name }}@if(Cart::isNotEmpty())<span class="badge badge-pill badge-secondary">{{ Cart::itemCount() }}</span> @endif @else{{ $item->name }}@endif</a>
+    <a class="nav-link @if($item->children->count() > 0) dropdown-toggle @endif" href="@if($item->is_internal == 1){{ route($item->url) }}@else{{ $item->url }}@endif" id="{{ $item->name }}" @if($item->children->count() > 0) role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" @endif @if($item->name == 'Logout') onclick="event.preventDefault(); document.getElementById('logout-form').submit();" @else @endif>@if($item->name == 'Account Menu'){{ Auth::user()->name }} <img src="{{ avatar_image_url(Auth::user(), 20) }}" class="rounded-circle"> @elseif($item->name == 'Cart'){{$item->name }}@if(Cart::isNotEmpty())<span class="badge badge-pill badge-secondary">{{ Cart::itemCount() }}</span> @endif @else{{ $item->name }}@endif</a>
     @endif
     @if($item->name == 'Logout')
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

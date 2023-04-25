@@ -88,10 +88,10 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
         }
 
         $views = [
-            module_Viewpath('Shop', $currentTheme),
             base_path("themes/$currentTheme/views/modules/Shop"),
-            module_Viewpath('Shop', 'default'),
+            module_Viewpath('Shop', $currentTheme),
             base_path("themes/default/views/modules/Shop"),
+            module_Viewpath('Shop', 'default'),
             base_path("resources/views/modules/Shop"),
         ];
 

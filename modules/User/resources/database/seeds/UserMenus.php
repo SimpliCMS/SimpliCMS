@@ -26,7 +26,7 @@ class UserMenus extends Seeder {
                     "menu_id" => $guestMenu->id,
                     'is_internal' => 1
         ]);
-        
+
         $adminMenuItem = MenuItem::create([
                     "name" => 'Admin',
                     "url" => 'admin.index',
@@ -34,12 +34,20 @@ class UserMenus extends Seeder {
                     "menu_id" => $userMenu->id,
                     'is_internal' => 1
         ]);
-        
+
         $accountMenuItem = MenuItem::create([
                     "name" => 'Account Menu',
                     "url" => '#',
                     "menu_id" => $userMenu->id,
                     'is_internal' => 0
+        ]);
+
+        $accountsettingsMenuItem = MenuItem::create([
+                    "name" => 'Account Settings',
+                    "url" => 'user.account',
+                    "parent_id" => $accountMenuItem->id,
+                    "menu_id" => $userMenu->id,
+                    'is_internal' => 1
         ]);
 
         $logoutMenuItem = MenuItem::create([

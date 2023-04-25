@@ -8,39 +8,33 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'SimpliCMS') }}</title>
-
+        @include('layouts._favicons')
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="{{ themes('css/app.css') }}" rel="stylesheet">
-        @include('layouts._favicons')
+        <link href="{{ themes('css/bootstrap.css') }}" rel="stylesheet">
     </head>
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-dark navbar-simplicms">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'SimpliCMS') }}
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'SimpliCMS') }}</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             @include('partials.menu.main', ['menu' => Core::getMenu('Main Menu')])
                         </ul>
-                        <!-- Right Side Of Navbar -->
                         @guest
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             @include('partials.menu.main', ['menu' => Core::getMenu('Guest Menu')])
                         </ul>
                         @else
-                        <ul class="navbar-nav ml-auto">
-                           @include('partials.menu.main', ['menu' => Core::getMenu('User Menu')])
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            @include('partials.menu.main', ['menu' => Core::getMenu('User Menu')])
                         </ul>
                         @endguest
                     </div>
@@ -64,8 +58,9 @@
         </div>
 
         <!-- Scripts -->
-        @stack('alpine')
-        <script src="{{ themes('js/app.js') }}"></script>
+        <script src="{{ themes('js/alpine.js') }}"></script>
+        <script src="{{ themes('js/jquery.js') }}"></script>
+        <script src="{{ themes('js/bootstrap.bundle.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
