@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     font-family: Montserrat-Regular, sans-serif;
-    background-color: rgb(245 245 245);
+    background-color: #f8fafc;
 }
 
 .navbar-simplicms {
@@ -9,3 +9,6 @@ body, html {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+a:hover, a:active, a:visited, a:link{
+    text-decoration: none;
+}
