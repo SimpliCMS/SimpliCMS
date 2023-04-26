@@ -57,7 +57,7 @@
                 @yield('content')
             </main>
         </div>
-
+        @stack('alpine')
         <!-- Scripts -->
         <script src="{{ themes('js/alpine.js') }}"></script>
         <script src="{{ themes('js/jquery.js') }}"></script>

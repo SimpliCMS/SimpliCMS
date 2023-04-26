@@ -47,14 +47,15 @@
                         @include('shop::checkout._payment')
 
 
-                        <div class="form-group">
+                        <div class="form-floating mb-3 row">
 
-                            <label>{{ __('Order Notes') }}</label>
                             {{ Form::textarea('notes', null, [
                                             'class' => 'form-control' . ($errors->has('notes') ? ' is-invalid' : ''),
-                                            'rows' => 3
+                                            'rows' => 3,
+                                            'placeholder' => __('Order Notes')
                                         ])
                             }}
+                            <label for="notes">{{ __('Order Notes') }}</label>
                             @if ($errors->has('notes'))
                             <div class="invalid-feedback">{{ $errors->first('notes') }}</div>
                             @endif
