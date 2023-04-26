@@ -4,7 +4,7 @@
              @if($product->hasImage())
         src="{{ $product->getThumbnailUrl() }}"
         @else
-        src="/images/product.jpg"
+        src="/themes/default/assets/img/product.jpg"
         @endif
         alt="{{ $product->name }}" />
     </a>

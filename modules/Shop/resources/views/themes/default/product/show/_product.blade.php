@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6">
         <div class="mb-2">
-            <?php $img = $product->hasImage() ? $product->getImageUrl('medium') : '/images/product-medium.jpg' ?>
+            <?php $img = $product->hasImage() ? $product->getImageUrl('medium') : url('/themes/default/assets/img/product-medium.jpg') ?>
             <img src="{{ $img  }}" id="product-image" />
         </div>
 
