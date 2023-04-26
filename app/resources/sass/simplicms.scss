@@ -1,0 +1,35 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+/*! `Custom` Bootstrap 5 theme */
+@import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
+
+$enable-grid-classes:true;
+$primary:#0e58ac;
+$secondary:#6c757d;
+$success:#198754;
+$danger:#dc3545;
+$info:#0dcaf0;
+$warning:#ffc107;
+$light:#f8f9fa;
+$dark:#212529;
+$spacer:1rem;
+$border-width:1px;
+$btn-border-radius:.25rem;
+// bootstrap
+@import "bootstrap/bootstrap";
+
+// Add SASS theme customizations here..
+
+body, html {
+    height: 100%;
+    font-family: Montserrat-Regular, sans-serif;
+    background-color: #f8fafc;
+}
+
+a:hover, a:active, a:visited, a:link{
+    text-decoration: none;
+}

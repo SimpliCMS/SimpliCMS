@@ -12,3 +12,5 @@ yarn-error.log
 .env
 .env.dusk.local
 .env.backup
+/themes/gypsyearth/
+/app/resources/sass/gypsyearth.scss
