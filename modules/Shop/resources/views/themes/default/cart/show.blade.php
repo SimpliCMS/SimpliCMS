@@ -22,7 +22,7 @@
     @else
     <div class="row">
         <div class="col-md-8">
-            <div class="card bg-white">
+            <div class="card bg-light">
                 <div class="card-header">{{ __('Cart Items') }}</div>
 
                 <div class="card-body">
@@ -40,7 +40,7 @@
                             <tbody>
                                 @foreach(Cart::getItems() as $item)
                                 <tr>
-                                    <td width="55"><img src="{{ $item->product->getThumbnailUrl() ?: url('/themes/default/assets/img/product.jpg') }}" class="product-image"/></td>
+                                    <td width="55"><img src="{{ $item->product->getThumbnailUrl() ?: '/images/product.jpg' }}" class="product-image"/></td>
                                     <td>
                                         <a href="{{ route('product.show', $item->product->masterProduct ? $item->product->masterProduct->slug : $item->product->slug) }}">
                                             {{ $item->product->getName() }}
