@@ -5,7 +5,7 @@
 @import 'variables';
 
 /*! `Custom` Bootstrap 5 theme */
-@import url(https://use.fontawesome.com/releases/v5.0.10/css/all.css);
+@import url(https://use.fontawesome.com/releases/v6.4.0/css/all.css);
 
 $enable-grid-classes:true;
 $primary:#0e58ac;
@@ -33,3 +33,32 @@ body, html {
 a:hover, a:active, a:visited, a:link{
     text-decoration: none;
 }
+
+.login-reg-section {
+  padding: 0 0; }
+
+.login-reg-pt {
+  padding-top: 0; }
+
+.login-reg-pb {
+  padding-bottom: 0; }
+
+.login-reg-wrap {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
+  .login-reg-wrap h3 {
+    font-weight: 300; }
+  .login-reg-wrap .icon {
+    width: 80px;
+    height: 80px;
+    background: $primary;
+    border-radius: 50%;
+    font-size: 30px;
+    margin: 0 auto;
+    margin-bottom: 10px; }
+    .login-reg-wrap .icon i {
+      color: #fff; }

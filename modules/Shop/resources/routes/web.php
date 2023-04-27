@@ -26,7 +26,7 @@ Route::group(['prefix' => 'cart', 'as' => 'cart.'], function () {
 });
 
 Route::group(['prefix' => 'checkout', 'as' => 'checkout.'], function () {
-    Route::get('show', 'CheckoutController@show')->name('show');
+    Route::get('show', 'CheckoutController@show')->name('show')->middleware('auth');
     Route::post('submit', 'CheckoutController@submit')->name('submit');
 });
 

@@ -39,3 +39,13 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}/{hash}', 'Auth\VerificationController@verify')->name('verification.verify'); // v6.x
 /* Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify'); // v5.x */
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+////Google
+//Route::get('/login/google', 'Auth\SocialLoginController@redirectToGoogle')->name('login.google');
+//Route::get('/login/google/callback', [Auth\SocialLoginController::class, 'handleGoogleCallback']);
+////Facebook
+//Route::get('/login/facebook', [Auth\SocialLoginController::class, 'redirectToFacebook'])->name('login.facebook');
+//Route::get('/login/facebook/callback', [Auth\SocialLoginController::class, 'handleFacebookCallback']);
+////Github
+//Route::get('/login/github', [Auth\LoginController::class, 'redirectToGithub'])->name('login.github');
+//Route::get('/login/github/callback', [Auth\SocialLoginController::class, 'handleGithubCallback']);

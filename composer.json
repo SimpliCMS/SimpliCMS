@@ -54,7 +54,8 @@
         },
         "merge-plugin": {
             "include": [
-                "modules/*/composer.json"
+                "modules/*/composer.json",
+                "plugins/*/composer.json"
             ],
             "recurse": true,
             "replace": false,

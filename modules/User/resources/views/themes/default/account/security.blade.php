@@ -4,9 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @include('user::partials.account-nav')
+             @include('user::partials.account-nav')
             <div class="card">
-                <div class="card-header">{{ __('Account Security') }}</div>
+                <h3 class="text-center mt-4 mb-4">{{ __('Account Security') }}</h3>
                 <div class="card-body">
                     <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST" class="justify-content-center">
                         @csrf
