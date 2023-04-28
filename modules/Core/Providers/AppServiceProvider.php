@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Schema;
 use Menu;
+use Blade;
 
 class AppServiceProvider extends ServiceProvider {
 
@@ -22,6 +23,12 @@ class AppServiceProvider extends ServiceProvider {
         }
 
         $this->app->concord->registerModel(\Konekt\User\Contracts\User::class, \Modules\User\Models\User::class);
+
+        Blade::directive('bootstrapjs', function ($string) {
+            $url = $app['url']->to('/resources/js/bootstrap.bundle.js');
+            $script = '<script src="'.$url.'"></script>';
+            return $script;
+        });
     }
 
     /**

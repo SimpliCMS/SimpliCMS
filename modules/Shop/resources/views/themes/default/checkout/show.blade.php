@@ -18,8 +18,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Checkout</div>
+            <div class="card shadow">
+                <h3 class="text-center mt-4 mb-4">{{ __('Check Out') }}</h3>
 
                 <div class="card-body">
                     @unless ($checkout)
@@ -74,8 +74,8 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="card bg-white">
-                <div class="card-header">Summary</div>
+            <div class="card shadow bg-white">
+                <h3 class="text-center mt-4 mb-4">{{ __('Summary') }}</h3>
                 <div class="card-body">
                     @include('shop::cart._summary')
                 </div>
