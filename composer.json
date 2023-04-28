@@ -39,7 +39,7 @@
         },
         "files": [
             "modules/Core/Helpers/Helper.php",
-            "modules/Core/Helpers/helper.php" 
+            "modules/Core/Helpers/helper_.php" 
         ]
     },
     "autoload-dev": {
