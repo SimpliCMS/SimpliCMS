@@ -15,11 +15,11 @@
                     <form method="POST" action="{{ route('login') }}" class="login-form needs-validation" novalidate>
                         @csrf
                         <div class="form-floating mb-3">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="name@example.com" required autofocus>
-                            <label for="email">{{ __('E-Mail Address') }}</label>
-                            @if ($errors->has('email'))
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Email or Username" required>
+                            <label for="username">{{ __('Email or Username') }}</label>
+                            @if ($errors->has('username'))
                             <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
+                                {{ $errors->first('username') }}
                             </div>
                             @endif
                         </div>

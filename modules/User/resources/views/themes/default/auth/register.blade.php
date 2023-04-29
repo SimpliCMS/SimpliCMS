@@ -15,7 +15,16 @@
                     <form method="POST" action="{{ route('register') }}" class="needs-validation" novalidate>
                         @csrf
                         <div class="form-floating mb-3">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="First and Last name" required autofocus>
+                            <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" placeholder="Username" required>
+                            <label for="username">{{ __('Username') }}</label>
+                            @if ($errors->has('name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('username') }}
+                            </div>
+                            @endif
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" placeholder="First and Last name" required>
                             <label for="name">{{ __('Name') }}</label>
                             @if ($errors->has('name'))
                             <div class="invalid-feedback">
@@ -24,7 +33,7 @@
                             @endif
                         </div>
                         <div class="form-floating mb-3">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="name@example.com" required autofocus>
+                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="name@example.com" required>
                             <label for="email">{{ __('E-Mail Address') }}</label>
                             @if ($errors->has('email'))
                             <div class="invalid-feedback">
@@ -32,7 +41,7 @@
                             </div>
                             @endif
                         </div>
-                        <div class="form-floating mb-3 d-flex">
+                        <div class="form-floating mb-3">
                             <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" placeholder="Password" required>
                             <label for="password">{{ __('Password') }}</label>
                             @if ($errors->has('password'))
@@ -41,7 +50,7 @@
                             </div>
                             @endif
                         </div>
-                        <div class="form-floating mb-3 d-flex">
+                        <div class="form-floating mb-3">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" required>
                             <label for="password-confirm">{{ __('Confirm Password') }}</label>
                         </div>                       

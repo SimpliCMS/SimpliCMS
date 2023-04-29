@@ -34,7 +34,7 @@ class SuperCommand extends Command
 
         $user = UserProxy::create([
             'email' => $email,
-            'email' => $username,
+            'username' => $username,
             'name' => $name,
             'password' => bcrypt($pass),
             'type' => UserType::ADMIN

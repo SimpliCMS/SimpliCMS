@@ -36,7 +36,7 @@ use ResetsPasswords;
     }
 
     public function showResetForm() {
-        return view('user::auth.passwords.rest');
+        return view('user::auth.passwords.reset');
     }
 
 }

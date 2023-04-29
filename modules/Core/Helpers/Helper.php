@@ -1,29 +1,19 @@
 <?php
 
-namespace Modules\Core\Helpers;
+function module_path($module) {
+    $location = base_path();
+    $modulesPath = $location . '/' . 'modules';
 
-use Modules\Core\Models\Menu as MenuModel;
+    return $modulesPath . '/' . $module;
+}
 
-class Helper {
+function module_Viewpath($module, $theme) {
+    $location = base_path();
+    $modulesPath = $location . '/' . 'modules';
 
-    public static function module_path($module) {
-        $location = base_path();
-        $modulesPath = $location . '/' . 'modules';
+    return $modulesPath . '/' . $module . '/resources/views/themes/' . $theme;
+}
 
-        return $modulesPath . '/' . $module;
-    }
-
-    public static function module_Viewpath($module, $theme) {
-        $location = base_path();
-        $modulesPath = $location . '/' . 'modules';
-
-        return $modulesPath . '/' . $module . '/resources/views/themes/' . $theme;
-    }
-
-    public static function getMenu($menuName) {
-
-        $menu = MenuModel::with('items.children')->where('name', $menuName)->first();
-        return $menu;
-    }
-
+function showMenu($menuName, $alignment = 'left') {
+    
 }
