@@ -13,7 +13,16 @@
                     <div class="card-body">
                         <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST" class="needs-validation justify-content-center" novalidate>
                             @csrf
-                            @method('PUT') 
+                            @method('PUT')
+                            <div class="form-floating mb-3 row">
+                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ $user->username }}" placeholder="Username" required>
+                                <label for="username">{{ __('Username') }}</label>
+                                @if ($errors->has('username'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('username') }}
+                                </div>
+                                @endif
+                            </div>
                             <div class="form-floating mb-3 row">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" placeholder="Name" required>
                                 <label for="name">{{ __('Name') }}</label>
