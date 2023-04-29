@@ -14,3 +14,6 @@ yarn-error.log
 .env.backup
 /themes/gypsyearth/
 /app/resources/sass/gypsyearth.scss
+/nbproject/private/
+nbproject/project.properties
+nbproject/project.xml
