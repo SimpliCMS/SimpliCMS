@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\{module}\Providers;
+namespace Modules\Profile\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +13,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
      *
      * @var string
      */
-    protected $modelNamespace = 'Modules\{module}\Models';
+    protected $modelNamespace = 'Modules\Profile\Models';
 
     /**
      * Bootstrap the module services.
@@ -40,7 +40,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     }
     
     public function ViewPaths() {
-        $moduleLower = lcfirst('{module}');
+        $moduleLower = lcfirst('Profile');
         if (Schema::hasTable('settings')) {
             $setting = DB::table('settings')->where('id', 'site.theme')->first();
             $currentTheme = $setting->value;
@@ -48,22 +48,22 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
             $currentTheme = 'default';
         }
         $views = [
-            base_path("themes/$currentTheme/views/modules/{module}"),
-            module_Viewpath('{module}', $currentTheme),
-            base_path("themes/default/views/modules/{module}"),
-            module_Viewpath('{module}', 'default'),
-            base_path("resources/views/modules/{module}"),
+            base_path("themes/$currentTheme/views/modules/Profile"),
+            module_Viewpath('Profile', $currentTheme),
+            base_path("themes/default/views/modules/Profile"),
+            module_Viewpath('Profile', 'default'),
+            base_path("resources/views/modules/Profile"),
         ];
 
         return $this->loadViewsFrom($views, $moduleLower);
     }
 
     public function adminViewPaths() {
-        $moduleLower = lcfirst('{module}');
+        $moduleLower = lcfirst('Profile');
         $currentTheme = 'admin';
         $views = [
-            module_Viewpath('{module}', $currentTheme),
-            base_path("themes/$currentTheme/views/modules/{module}"),
+            module_Viewpath('Profile', $currentTheme),
+            base_path("themes/$currentTheme/views/modules/Profile"),
         ];
 
         return $this->loadViewsFrom($views, $moduleLower.'-admin');

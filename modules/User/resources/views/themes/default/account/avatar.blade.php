@@ -3,38 +3,29 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
             @include('user::partials.account-nav')
-            <div class="card">
-                <div class="card-header">{{ __('Account Details') }}</div>
-                <div class="card-body">
-                    <form action="{{ route('user.update', ['id'=> $user->id]) }}" method="POST" class="needs-validation justify-content-center" novalidate>
-                        @csrf
-                        @method('PUT') 
-                        <div class="form-floating mb-3 row">
-                            <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" placeholder="Name" required autofocus>
-                            <label for="name">{{ __('Name') }}</label>
-                            @if ($errors->has('name'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('name') }}
+            <div class="card shadow rounded">
+                <div class="p-4 p-md-5">
+                    <h3 class="text-center mt-4 mb-4">{{ __('Profile Avatar') }}</h3>
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <img src="{{ $profile->getProfileAvatar() }}" class="rounded-circle" style="width: 200px;">
+                        </div>
+                        <form method="POST" action="{{ route('profile.update', ['user' => $user, 'profile' => $profile]) }}" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="mb-3">
+                                <label for="avatar" class="form-label">Avatar</label>
+                                <input type="file" class="form-control" id="avatar" name="avatar">
                             </div>
-                            @endif
-                        </div>
-                        <div class="form-floating mb-3 row">
-                            <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" placeholder="name@example.com" required>
-                            <label for="email">{{ __('E-Mail Address') }}</label>
-                            @if ($errors->has('email'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('email') }}
-                            </div>
-                            @endif
-                        </div>
-                        <div class="d-grid gap-2 mx-auto">
-                            <button type="submit" class="btn btn-primary btn-lg">
-                                {{ __('Update') }}
-                            </button>
-                        </div>
-                    </form>
+
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,7 +33,7 @@
     @endsection
     <script>
         window.onload = function () {
-            var element = document.getElementById("account");
+            var element = document.getElementById("avatar");
             element.classList.add("active");
         };
     </script>

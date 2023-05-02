@@ -23,7 +23,6 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
     public function boot() {
         $this->app->concord->registerModule(\Konekt\AppShell\Providers\ModuleServiceProvider::class,
                 $config = [
-            'migrations' => true,
             'ui' => [
                 'name' => 'Vanilo',
                 'url' => '/admin'

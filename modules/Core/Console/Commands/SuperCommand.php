@@ -9,18 +9,19 @@ use Konekt\Acl\Models\RoleProxy;
 use Konekt\AppShell\Acl\ResourcePermissionMapper;
 use Konekt\User\Models\UserProxy;
 use Konekt\User\Models\UserType;
+use Konekt\Address\Models\PersonProxy;
+use Modules\User\Models\User;
+use Modules\Profile\Models\Profile;
 
-class SuperCommand extends Command
-{
+class SuperCommand extends Command {
+
     protected $signature = 'core:make:superuser';
-
     protected $description = 'Create a superuser (for initial setup)';
 
     /** @var ResourcePermissionMapper */
     private $permissionMapper;
 
-    public function handle(ResourcePermissionMapper $permissionMapper)
-    {
+    public function handle(ResourcePermissionMapper $permissionMapper) {
         $this->permissionMapper = $permissionMapper;
         $this->info("Now you're about to create a new user with all privileges");
 
@@ -32,14 +33,35 @@ class SuperCommand extends Command
 
         $role = $this->fetchRole($roleName);
 
-        $user = UserProxy::create([
-            'email' => $email,
-            'username' => $username,
-            'name' => $name,
-            'password' => bcrypt($pass),
-            'type' => UserType::ADMIN
-        ])->fresh();
+        $user = User::create([
+                    'email' => $email,
+                    'username' => $username,
+                    'name' => $name,
+                    'password' => bcrypt($pass),
+                    'type' => UserType::ADMIN
+                ])->fresh();
+        
+        $nameParts = explode(' ', $user->name, 2); // Split into maximum 2 parts
 
+        $firstName = $nameParts[0]; // First name is always the first part
+
+        if (count($nameParts) > 1) {
+            $lastName = $nameParts[1]; // Last name is the second part if available
+        } else {
+            $lastName = $firstName; // Use first name for last name if last name is not available
+        }
+        
+        $person = PersonProxy::create([
+                    'firstname' => $firstName,
+                    'lastname' => $lastName,
+                ])->fresh();
+
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'person_id' => $person->id
+        ]);
+
+        $user->profile()->save($profile);
         $this->info("User '$email' has been created (id: {$user->id})");
 
         $user->assignRole($roleName);
@@ -51,8 +73,7 @@ class SuperCommand extends Command
      *
      * @return string
      */
-    protected function askEmail()
-    {
+    protected function askEmail() {
         $email = $this->ask('E-mail');
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -76,13 +97,12 @@ class SuperCommand extends Command
         return $email;
     }
 
-        /**
+    /**
      * Asks for and validates Username
      *
      * @return string
      */
-    protected function askUsername()
-    {
+    protected function askUsername() {
         $username = $this->ask('Username');
 
         /** @var Builder $query */
@@ -101,16 +121,16 @@ class SuperCommand extends Command
 
         return $username;
     }
+
     /**
      * @param $roleName
      *
      * @return Role
      */
-    protected function fetchRole($roleName)
-    {
+    protected function fetchRole($roleName) {
         $role = RoleProxy::where('name', $roleName)->first();
-        if (! $role) {
-            if (! $this->confirm("Role '$roleName' doesn't exists. Create it?")) {
+        if (!$role) {
+            if (!$this->confirm("Role '$roleName' doesn't exists. Create it?")) {
                 $this->warn('Nothing has been done.');
                 exit(1);
             }
@@ -127,8 +147,7 @@ class SuperCommand extends Command
      *
      * @return Role
      */
-    protected function createRole($name)
-    {
+    protected function createRole($name) {
         /** @var \Konekt\Acl\Models\Role $role */
         $role = RoleProxy::create(['name' => $name])->fresh();
 
@@ -137,4 +156,5 @@ class SuperCommand extends Command
 
         return $role;
     }
+
 }

@@ -12,6 +12,7 @@
  */
 
 Route::get('account', 'UserController@account')->name('user.account');
+Route::get('account/avatar', 'UserController@avatar')->name('user.account.avatar');
 Route::get('account/security', 'UserController@accountSecurity')->name('user.account.security');
 Route::put('update/{id}', 'UserController@update')->name('user.update');
 

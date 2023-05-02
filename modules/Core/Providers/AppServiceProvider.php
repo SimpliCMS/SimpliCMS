@@ -23,6 +23,7 @@ class AppServiceProvider extends ServiceProvider {
         }
 
         $this->app->concord->registerModel(\Konekt\User\Contracts\User::class, \Modules\User\Models\User::class);
+        $this->app->concord->registerModel(\Konekt\User\Contracts\Profile::class, \Modules\Profile\Models\Profile::class);
 
         Blade::directive('bootstrapjs', function ($string) {
             $url = $app['url']->to('/resources/js/bootstrap.bundle.js');

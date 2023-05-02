@@ -11,7 +11,7 @@ use Konekt\Acl\Traits\HasRoles;
 use Konekt\Customer\Models\CustomerProxy;
 use Konekt\Customer\Traits\BelongsToACustomer;
 use Konekt\Customer\Traits\CustomerIsOptional;
-use Konekt\User\Contracts\Profile;
+use Modules\Profile\Models\Profile;
 use Konekt\User\Contracts\User as UserContract;
 
 class User extends Authenticatable implements UserContract {
@@ -71,7 +71,10 @@ class User extends Authenticatable implements UserContract {
     public function getProfile(): ?Profile {
         return null;
     }
-
+ public function Profile()
+    {
+        return $this->hasOne('Modules\Profile\Models\Profile');
+    }
     public function customersVisible(): Collection {
         if (!$this->can('list customers')) {
             return $this->isAssociatedWithACustomer() ?

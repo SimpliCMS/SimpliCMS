@@ -2,9 +2,12 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
-use Modules\User\User;
+use Modules\User\Models\User;
+use Konekt\Address\Models\PersonProxy;
+use Modules\Profile\Models\Profile;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Modules\Core\Http\Controllers\Controller as BaseController;
 
 class RegisterController extends BaseController {
@@ -45,7 +48,7 @@ use RegistersUsers;
      */
     protected function validator(array $data) {
         return Validator::make($data, [
-                    'username' => 'required|string|username|max:255|unique:users',
+                    'username' => 'required|string|max:255|unique:users',
                     'name' => 'required|string|max:255',
                     'email' => 'required|string|email|max:255|unique:users',
                     'password' => 'required|string|min:6|confirmed',
@@ -63,12 +66,35 @@ use RegistersUsers;
      * @return \App\User
      */
     protected function create(array $data) {
-        return User::create([
+        $user = User::create([
                     'username' => $data['username'],
                     'name' => $data['name'],
                     'email' => $data['email'],
                     'password' => bcrypt($data['password']),
         ]);
+
+        $nameParts = explode(' ', $user->name, 2); // Split into maximum 2 parts
+
+        $firstName = $nameParts[0]; // First name is always the first part
+
+        if (count($nameParts) > 1) {
+            $lastName = $nameParts[1]; // Last name is the second part if available
+        } else {
+            $lastName = $firstName; // Use first name for last name if last name is not available
+        }
+
+        $person = PersonProxy::create([
+                    'firstname' => $firstName,
+                    'lastname' => $lastName,
+        ]);
+
+        $profile = new Profile([
+            'user_id' => $user->id,
+            'person_id' => $person->id
+        ]);
+        $user->profile()->save($profile);
+        
+        return $user;
     }
 
 }

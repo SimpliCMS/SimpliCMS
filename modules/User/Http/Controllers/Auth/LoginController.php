@@ -50,7 +50,7 @@ use AuthenticatesUsers;
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)):
-            return redirect()->to('login')
+            return redirect()->to(route('login'))
                             ->withErrors(trans('auth.failed'));
         endif;
 

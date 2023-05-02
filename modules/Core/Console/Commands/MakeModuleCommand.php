@@ -75,16 +75,21 @@ class MakeModuleCommand extends Command {
         $routeserviceproviderstub = str_replace('{module}', $moduleName, $routeserviceproviderstub);
         File::put($modulePath . '/Providers/RouteServiceProvider.php', $routeserviceproviderstub);
 
+        // Create the PluginServiceProvider.php file using the stub
+        $pluginserviceproviderstub = $this->getStub('plugin-service-provider.stub');
+        $pluginserviceproviderstub = str_replace('{module}', $moduleName, $pluginserviceproviderstub);
+        File::put($modulePath . '/Providers/PluginServiceProvider.php', $pluginserviceproviderstub);
+        
         // Create the route files using the stubs
-        $routeadminstub = $this->getStub('route-admin.stub');
+        $routeadminstub = $this->getStub('routes-admin.stub');
         $routeadminstub = str_replace('{module}', $moduleName, $routeadminstub);
         File::put($modulePath . '/resources/routes/admin.php', $routeadminstub);
 
-        $routeapistub = $this->getStub('route-api.stub');
+        $routeapistub = $this->getStub('routes-api.stub');
         $routeapistub = str_replace('{module}', $moduleName, $routeapistub);
         File::put($modulePath . '/resources/routes/api.php', $routeapistub);
 
-        $routewebstub = $this->getStub('route-web.stub');
+        $routewebstub = $this->getStub('routes-web.stub');
         $routewebstub = str_replace('{module}', $moduleName, $routewebstub);
         File::put($modulePath . '/resources/routes/web.php', $routewebstub);
 

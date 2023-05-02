@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Modules\User\Models\User;
+use Modules\Profile\Models\Profile;
 
 class UserController extends Controller {
 
@@ -17,9 +18,21 @@ class UserController extends Controller {
      */
     public function account() {
         $user = Auth::user();
-        return view('user::account.index', compact('user'));
+        $profile = Profile::where('user_id', $user->id) -> first();;
+        return view('user::account.index', ['user' => $user, 'profile' => $profile]);
     }
 
+    /**
+     * Show the form for editing the specified resource.
+     * @param int $id
+     * @return Renderable
+     */
+    public function avatar() {
+        $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id) -> first();
+        return view('user::account.avatar', ['user' => $user, 'profile' => $profile]);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      * @param int $id

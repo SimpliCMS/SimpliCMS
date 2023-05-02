@@ -21,10 +21,9 @@ class ModuleMigrate extends Command {
         } else {
             // Otherwise, run all module migrations first
             $this->migrateAllModules();
-
             // Then, run Laravel core migrations
             $this->call('migrate');
-
+            $this->migrateModule('Profile');
             // Run seeders if --seed option is present
             if ($this->option('seed')) {
                 if ($moduleName) {
@@ -45,6 +44,9 @@ class ModuleMigrate extends Command {
 
         foreach ($moduleDirectories as $moduleDirectory) {
             $moduleName = File::basename($moduleDirectory);
+            if ($moduleName === 'Profile') {
+                continue;
+            }
             $this->migrateModule($moduleName);
         }
     }

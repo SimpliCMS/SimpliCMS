@@ -1,5 +1,5 @@
 {
-    "name": "simplicms/{module}",
+    "name": "simplicms/Profile",
     "description": "",
     "authors": [
         {
@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Modules\\{module}\\": ""
+            "Modules\\Profile\\": ""
         }
     }
 }
