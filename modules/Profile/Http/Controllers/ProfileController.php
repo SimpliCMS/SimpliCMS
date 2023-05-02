@@ -5,6 +5,7 @@ namespace Modules\Profile\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Modules\Core\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Konekt\User\Contracts\Avatar;
 use Modules\User\Models\User;
 use Modules\Profile\Models\Profile;
@@ -23,8 +24,10 @@ class ProfileController extends Controller {
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function create() {
-        return view('profile::create');
+    public function settingsIndex() {
+                $user = Auth::user();
+        $profile = Profile::where('user_id', $user->id) -> first();;
+        return view('profile::settings.index', ['user' => $user, 'profile' => $profile]);
     }
 
     /**

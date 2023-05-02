@@ -47,6 +47,7 @@ class UserMenus extends Seeder {
                     "url" => 'user.account',
                     "parent_id" => $accountMenuItem->id,
                     "menu_id" => $userMenu->id,
+                    'order' => '1',
                     'is_internal' => 1
         ]);
 
@@ -55,6 +56,7 @@ class UserMenus extends Seeder {
                     "url" => 'logout',
                     "parent_id" => $accountMenuItem->id,
                     "menu_id" => $userMenu->id,
+                    'order' => '3',
                     'is_internal' => 1
         ]);
     }

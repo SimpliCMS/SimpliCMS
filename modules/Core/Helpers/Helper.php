@@ -2,7 +2,8 @@
 
 namespace Modules\Core\Helpers;
 
-use Modules\Core\Models\Menu as MenuModel;
+use Modules\Core\Models\Menu;
+use Modules\Core\Models\MenuItem;
 
 class Helper {
 
@@ -22,8 +23,9 @@ class Helper {
 
     public static function getMenu($menuName) {
 
-        $menu = MenuModel::with('items.children')->where('name', $menuName)->first();
-        return $menu;
+        $menu = Menu::with('items.children')->where('name', $menuName)->first();
+        $menuItems = MenuItem::where('menu_id', $menu->id)->orderBy('order', 'DESC')->get();
+        return $menuItems;
     }
 
 }

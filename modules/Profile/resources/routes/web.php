@@ -15,3 +15,4 @@
     });
     
     Route::put('/{user}/{profile}', 'ProfileController@update')->name('profile.update');
+    Route::get('settings', 'ProfileController@settingsIndex')->name('profile.settings');

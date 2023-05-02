@@ -6,17 +6,25 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 
-class ModuleSeed extends Command
-{
-    protected $signature = 'core:module:seed';
+class ModuleSeed extends Command {
 
+    protected $signature = 'core:module:seed';
     protected $description = 'Run seeders for modules.';
 
-    public function handle()
-    {
+    public function handle() {
         // Get all module directories
         $modulePath = 'modules';
         $moduleDirectories = File::directories($modulePath);
+
+        // Sort modules alphabetically
+        sort($moduleDirectories);
+
+        // Remove Profile module from the list
+        $profileDirectory = array_search($modulePath . '/Profile', $moduleDirectories);
+        if ($profileDirectory !== false) {
+            unset($moduleDirectories[$profileDirectory]);
+            array_push($moduleDirectories, $modulePath . '/Profile');
+        }
 
         // Loop through module directories
         foreach ($moduleDirectories as $moduleDirectory) {
@@ -45,4 +53,5 @@ class ModuleSeed extends Command
 
         $this->info('Module seeders have been run successfully!');
     }
+
 }

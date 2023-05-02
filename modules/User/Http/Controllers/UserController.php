@@ -27,17 +27,6 @@ class UserController extends Controller {
      * @param int $id
      * @return Renderable
      */
-    public function avatar() {
-        $user = Auth::user();
-        $profile = Profile::where('user_id', $user->id) -> first();
-        return view('user::account.avatar', ['user' => $user, 'profile' => $profile]);
-    }
-    
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
     public function accountSecurity() {
         $user = Auth::user();
         return view('user::account.security', compact('user'));

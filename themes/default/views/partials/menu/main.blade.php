@@ -1,4 +1,4 @@
-@foreach($menu->items as $item)
+@foreach($menuItems->sortBy('order') as $item)
 @if($item->parent_id === null)
 <li class="nav-item @if($item->children->count() > 0) dropdown @endif">
     @if($item->name == 'Admin')
@@ -15,7 +15,7 @@
     @endif    
     @if($item->children->count() > 0)
     <ul class="dropdown-menu" aria-labelledby="{{ $item->name }}">
-        @foreach($item->children as $childItem)
+        @foreach($item->children->sortBy('order') as $childItem)
         @if($item->name == 'Admin')
         @role('admin')
         <li><a class="dropdown-item" href="@if($childItem->is_internal == 1){{ route($childItem->url) }}@else{{ $childItem->url }}@endif">{{ $childItem->name }}</a></li>

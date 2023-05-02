@@ -27,15 +27,15 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            @include('partials.menu.main', ['menu' => Core::getMenu('Main Menu')])
+                            @include('partials.menu.main', ['menuItems' => Core::getMenu('Main Menu')])
                         </ul>
                         @guest
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            @include('partials.menu.main', ['menu' => Core::getMenu('Guest Menu')])
+                            @include('partials.menu.main', ['menuItems' => Core::getMenu('Guest Menu')])
                         </ul>
                         @else
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                            @include('partials.menu.main', ['menu' => Core::getMenu('User Menu')])
+                            @include('partials.menu.main', ['menuItems' => Core::getMenu('User Menu')])
                         </ul>
                         @endguest
                     </div>

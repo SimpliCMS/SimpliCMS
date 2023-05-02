@@ -63,7 +63,7 @@ class User extends Authenticatable implements UserContract {
 
         static::deleting(function ($user) { // before delete() method call this
             $user->profile->delete();
-            $personDelete = Person::where('user_id',$this->id)->delete();
+            $personDelete = Person::where('user_id',$user->id)->delete();
         });
     }
 
