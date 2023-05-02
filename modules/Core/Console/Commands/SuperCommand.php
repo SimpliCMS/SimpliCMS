@@ -40,7 +40,7 @@ class SuperCommand extends Command {
                     'password' => bcrypt($pass),
                     'type' => UserType::ADMIN
                 ])->fresh();
-        
+
         $nameParts = explode(' ', $user->name, 2); // Split into maximum 2 parts
 
         $firstName = $nameParts[0]; // First name is always the first part
@@ -50,8 +50,9 @@ class SuperCommand extends Command {
         } else {
             $lastName = $firstName; // Use first name for last name if last name is not available
         }
-        
+
         $person = PersonProxy::create([
+                    'user_id' => $user->id,
                     'firstname' => $firstName,
                     'lastname' => $lastName,
                 ])->fresh();

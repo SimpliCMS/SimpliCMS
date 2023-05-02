@@ -84,6 +84,7 @@ use RegistersUsers;
         }
 
         $person = PersonProxy::create([
+                    'user_id' => $user->id,
                     'firstname' => $firstName,
                     'lastname' => $lastName,
         ]);
@@ -93,7 +94,7 @@ use RegistersUsers;
             'person_id' => $person->id
         ]);
         $user->profile()->save($profile);
-        
+
         return $user;
     }
 

@@ -12,6 +12,7 @@ use Konekt\Customer\Models\CustomerProxy;
 use Konekt\Customer\Traits\BelongsToACustomer;
 use Konekt\Customer\Traits\CustomerIsOptional;
 use Modules\Profile\Models\Profile;
+use Modules\Profile\Models\Person;
 use Konekt\User\Contracts\User as UserContract;
 
 class User extends Authenticatable implements UserContract {
@@ -57,6 +58,15 @@ class User extends Authenticatable implements UserContract {
         'email_verified_at' => 'datetime',
     ];
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function ($user) { // before delete() method call this
+            $user->profile->delete();
+            $personDelete = Person::where('user_id',$this->id)->delete();
+        });
+    }
+
 // Implement these methods from the required Interface:
     public function inactivate() {
         $this->is_active = false;
@@ -71,10 +81,11 @@ class User extends Authenticatable implements UserContract {
     public function getProfile(): ?Profile {
         return null;
     }
- public function Profile()
-    {
+
+    public function Profile() {
         return $this->hasOne('Modules\Profile\Models\Profile');
     }
+
     public function customersVisible(): Collection {
         if (!$this->can('list customers')) {
             return $this->isAssociatedWithACustomer() ?
