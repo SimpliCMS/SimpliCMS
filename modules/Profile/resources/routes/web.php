@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-    Route::get('/', function () {
-        dd('This is the Profile module index page. Build something great!');
-    });
-    
-    Route::put('/{user}/{profile}', 'ProfileController@update')->name('profile.update');
+
     Route::get('settings', 'ProfileController@settingsIndex')->name('profile.settings');
+     Route::get('settings/info', 'ProfileController@settingsInfo')->name('profile.settings.info');
+     
+     Route::put('/{user}/{profile}', 'ProfileController@updateAvatar')->name('profile.update.avatar');
+     Route::get('/{user}/{profile}', 'ProfileController@deleteAvatar')->name('profile.delete.avatar');
