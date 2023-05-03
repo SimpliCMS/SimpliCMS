@@ -84,6 +84,7 @@ class ProfileController extends Controller {
         $profile->person->birthdate = $request->input('birthdate');
         $profile->person->gender = $request->input('gender');
         $profile->person->gender_value = $gender;
+        $profile->person->gender = $request->input('bio');
         $profile->person->save();
         return back()->with('success', 'Profile updated successfully.');
     }
