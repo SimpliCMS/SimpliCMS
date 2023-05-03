@@ -4,7 +4,7 @@
             <a class="nav-link" id ="avatar" href="{{ route('profile.settings') }}">{{ __('Profile Avatar') }}</a>
         </li>   
         <li class="nav-item" role="presentation">
-            <a class="nav-link" id ="info" href="{{ route('profile.settings.info') }}">{{ __('Profile Info') }}</a>
+            <a class="nav-link" id ="info" href="{{ route('profile.settings.info') }}">{{ __('Basic Info') }}</a>
         </li>  
     </ul>
 </div>

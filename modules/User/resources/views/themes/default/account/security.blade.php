@@ -38,10 +38,12 @@
             </div>
         </div>
     </div>
-    @endsection
+    @push('scripts')
     <script>
         window.onload = function () {
             var element = document.getElementById("security");
             element.classList.add("active");
         };
     </script>
+    @endpush
+    @endsection

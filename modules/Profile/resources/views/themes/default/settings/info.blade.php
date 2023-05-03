@@ -2,7 +2,7 @@
 
 @section('content')
 @push('style')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
 @endpush
 <div class="container">
     <div class="row justify-content-center">
@@ -12,7 +12,7 @@
             @include('profile::partials.settings-nav')
             <div class="card shadow rounded">
                 <div class="p-4 p-md-5">
-
+                    <h3 class="text-center mt-4 mb-4">{{ __('Basic Info') }}</h3>
                     <div class="card-body">
                         <form method="POST" action="{{ route('profile.update', ['profile' => $profile]) }}" enctype="multipart/form-data">
                             @csrf
@@ -25,13 +25,15 @@
 
                             <div class="form-floating mb-3 row">
                                 <select class="form-select" name="gender" id="gender" aria-label="Floating label select example">
-                                    <option value=" "></option>
+                                    <option value=" ">Select Gender</option>
                                     <option value="m" {{ ( $profile->person->gender_value == 'Male') ? 'selected' : '' }}>Male</option>
                                     <option value="f" {{ ( $profile->person->gender_value == 'Female') ? 'selected' : '' }}>Female</option>
                                 </select>
                                 <label for="gender">Select Gender</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                            <div class="d-grid gap-2 mx-auto">
+                                <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                            </div>
                         </form>
                     </div>
                 </div>

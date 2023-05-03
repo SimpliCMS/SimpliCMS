@@ -19,6 +19,7 @@ class Person extends PersonModel {
         $this->mergeFillable([
             'user_id',
             'gender_value',
+            'bio',
         ]);
     }
 

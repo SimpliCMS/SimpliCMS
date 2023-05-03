@@ -11,8 +11,8 @@
   |
  */
 
-Route::get('settings', 'ProfileController@settingsIndex')->name('profile.settings');
-Route::get('settings/info', 'ProfileController@settingsInfo')->name('profile.settings.info');
+Route::get('edit', 'ProfileController@settingsIndex')->name('profile.settings');
+Route::get('edit/info', 'ProfileController@settingsInfo')->name('profile.settings.info');
 Route::put('/update/{profile}', 'ProfileController@update')->name('profile.update');
 Route::put('/{user}/{profile}', 'ProfileController@updateAvatar')->name('profile.update.avatar');
 Route::get('/{user}/{profile}', 'ProfileController@deleteAvatar')->name('profile.delete.avatar');

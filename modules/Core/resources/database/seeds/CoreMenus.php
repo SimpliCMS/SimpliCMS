@@ -10,26 +10,30 @@ class CoreMenus extends Seeder {
 
     public function run() {
         $mainMenu = Menu::create([
-            'name' => 'Main Menu',
-            'slug' => 'main-menu',
+                    'name' => 'Main Menu',
+                    'slug' => 'main-menu',
         ]);
-        
+
         $guestMenu = Menu::create([
-            'name' => 'Guest Menu',
-            'slug' => 'guest-menu',
+                    'name' => 'Guest Menu',
+                    'slug' => 'guest-menu',
         ]);
-        
+
         $userMenu = Menu::create([
-            'name' => 'User Menu',
-            'slug' => 'user-menu',
+                    'name' => 'User Menu',
+                    'slug' => 'user-menu',
         ]);
-        
-        
+
+        $footerMenu = Menu::create([
+                    'name' => 'Footer Menu',
+                    'slug' => 'footer-menu',
+        ]);
+
         $homeMenuItem = MenuItem::create([
-            "name" => 'Home',
-            "url" => 'home',
-            "menu_id" => $mainMenu->id,
-            'is_internal' => 1
+                    "name" => 'Home',
+                    "url" => 'home',
+                    "menu_id" => $mainMenu->id,
+                    'is_internal' => 1
         ]);
     }
 
