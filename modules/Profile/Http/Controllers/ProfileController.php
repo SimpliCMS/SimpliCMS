@@ -70,6 +70,7 @@ class ProfileController extends Controller {
         $user = Auth::user();
         $request->validate([
             'birthdate' => 'required|string|max:255',
+            'bio' => 'required|string|max:255',
         ]);
 
         $profile = Profile::where('user_id', $user->id)->first();
@@ -84,7 +85,7 @@ class ProfileController extends Controller {
         $profile->person->birthdate = $request->input('birthdate');
         $profile->person->gender = $request->input('gender');
         $profile->person->gender_value = $gender;
-        $profile->person->gender = $request->input('bio');
+        $profile->person->bio = $request->input('bio');
         $profile->person->save();
         return back()->with('success', 'Profile updated successfully.');
     }

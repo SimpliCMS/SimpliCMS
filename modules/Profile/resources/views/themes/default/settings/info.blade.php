@@ -32,7 +32,7 @@
                                 <label for="gender">Select Gender</label>
                             </div>
                             <div class="form-floating mb-3 row">
-                                <textarea class="form-control" name="bio" value="{{ $profile->person->bio }}" placeholder="Profile Bio" id="bio"></textarea>
+                                <textarea class="form-control" name="bio" value="{{ $profile->person->bio }}" placeholder="Profile Bio" id="bio" style="height: 100px">@if(!empty($profile->person->bio)){{ $profile->person->bio }}@endif </textarea>
                                 <label for="bio">Bio</label>
                             </div>
                             <div class="d-grid gap-2 mx-auto">
