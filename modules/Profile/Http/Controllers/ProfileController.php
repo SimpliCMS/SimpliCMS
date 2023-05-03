@@ -29,7 +29,6 @@ class ProfileController extends Controller {
     public function settingsIndex() {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        ;
         return view('profile::settings.index', ['user' => $user, 'profile' => $profile]);
     }
 
@@ -40,7 +39,6 @@ class ProfileController extends Controller {
     public function settingsInfo() {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        ;
         return view('profile::settings.info', ['user' => $user, 'profile' => $profile]);
     }
 
@@ -63,12 +61,31 @@ class ProfileController extends Controller {
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Update the specified resource in storage.
+     * @param Request $request
      * @param int $id
      * @return Renderable
      */
-    public function edit($id) {
-        return view('profile::edit');
+    public function update(Request $request) {
+        $user = Auth::user();
+        $request->validate([
+            'birthdate' => 'required|string|max:255',
+        ]);
+
+        $profile = Profile::where('user_id', $user->id)->first();
+        if ($request->input('gender') == 'm') {
+            $gender = 'Male';
+        } elseif ($request->input('gender') == 'f') {
+            $gender = 'Female';
+        } else {
+            $gender = null;
+        }
+
+        $profile->person->birthdate = $request->input('birthdate');
+        $profile->person->gender = $request->input('gender');
+        $profile->person->gender_value = $gender;
+        $profile->person->save();
+        return back()->with('success', 'Profile updated successfully.');
     }
 
     /**
@@ -79,16 +96,20 @@ class ProfileController extends Controller {
      */
     public function updateAvatar(Request $request) {
         $user = Auth::user();
+
         $request->validate([
             'avatar' => 'required|image',
         ]);
+
         $profile = Profile::where('user_id', $user->id)->first();
+
         // Delete previous avatar file if it exists
         if ($profile && $profile->avatar_data) {
             $avatarPath = str_replace('app/storage/', '', $profile->avatar_data);
             unlink(storage_path($avatarPath));
             rmdir(storage_path('app/public/avatars/' . $user->id));
         }
+
         $avatarContent = file_get_contents($request->avatar->getRealPath());
         $avatarHash = hash('sha256', $avatarContent);
         $avatarExtension = $request->avatar->getClientOriginalExtension();
@@ -109,7 +130,7 @@ class ProfileController extends Controller {
      */
     public function deleteAvatar(Request $request) {
         $user = Auth::user();
-        
+
         $profile = Profile::where('user_id', $user->id)->first();
         // Delete previous avatar file if it exists
         if ($profile && $profile->avatar_data) {

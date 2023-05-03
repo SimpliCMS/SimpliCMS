@@ -18,6 +18,7 @@ class Person extends PersonModel {
         parent::__construct($attributes);
         $this->mergeFillable([
             'user_id',
+            'gender_value',
         ]);
     }
 

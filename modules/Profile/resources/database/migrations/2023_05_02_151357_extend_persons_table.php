@@ -9,6 +9,7 @@ class ExtendPersonsTable extends Migration {
     public function up() {
         Schema::table('persons', function (Blueprint $table) {
             $table->integer('user_id')->nullable();
+            $table->string('gender_value')->nullable();
         });
     }
 

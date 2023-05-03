@@ -1,6 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
+@push('style')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+@endpush
 <div class="container">
     <div class="row justify-content-center">
     </div>
@@ -11,12 +14,23 @@
                 <div class="p-4 p-md-5">
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('profile.update.avatar', ['user' => $user, 'profile' => $profile]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('profile.update', ['profile' => $profile]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
 
+                            <div class="form-floating mb-3 row">
+                                <input type="text" class="flatpickr flatpickr-input active" name="birthdate" id="birthdate" value="{{ $profile->person->birthdate }}" placeholder="Date of Birth">
+                                <label for="birthdate">{{ __('Date of Birth') }}</label>
+                            </div>
 
-
+                            <div class="form-floating mb-3 row">
+                                <select class="form-select" name="gender" id="gender" aria-label="Floating label select example">
+                                    <option value=" "></option>
+                                    <option value="m" {{ ( $profile->person->gender_value == 'Male') ? 'selected' : '' }}>Male</option>
+                                    <option value="f" {{ ( $profile->person->gender_value == 'Female') ? 'selected' : '' }}>Female</option>
+                                </select>
+                                <label for="gender">Select Gender</label>
+                            </div>
                             <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                         </form>
                     </div>
@@ -24,10 +38,22 @@
             </div>
         </div>
     </div>
-    @endsection
+    @push('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+config = {
+    altInput: true,
+    altFormat: "F j, Y",
+    dateFormat: "Y-m-d",
+}
+flatpickr("input[type=text]", config);
+    </script>
     <script>
         window.onload = function () {
             var element = document.getElementById("info");
             element.classList.add("active");
         };
     </script>
+
+    @endpush
+    @endsection
