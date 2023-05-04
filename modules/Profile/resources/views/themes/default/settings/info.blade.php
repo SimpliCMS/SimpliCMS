@@ -25,11 +25,11 @@
 
                             <div class="form-floating mb-3 row">
                                 <select class="form-select" name="gender" id="gender" aria-label="Floating label select example">
-                                    <option value=" ">Select Gender</option>
+                                    <option value=" ">Gender</option>
                                     <option value="m" {{ ( $profile->person->gender_value == 'Male') ? 'selected' : '' }}>Male</option>
                                     <option value="f" {{ ( $profile->person->gender_value == 'Female') ? 'selected' : '' }}>Female</option>
                                 </select>
-                                <label for="gender">Select Gender</label>
+                                <label for="gender">Gender</label>
                             </div>
                             <div class="form-floating mb-3 row">
                                 <textarea class="form-control" name="bio" value="{{ $profile->person->bio }}" placeholder="Profile Bio" id="bio" style="height: 100px">@if(!empty($profile->person->bio)){{ $profile->person->bio }}@endif </textarea>

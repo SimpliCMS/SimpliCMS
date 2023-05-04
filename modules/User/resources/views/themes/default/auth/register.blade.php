@@ -57,15 +57,6 @@
                         <div class="form-group">
                             <button type="submit" class="form-control btn btn-primary rounded submit px-3">{{ __('Register') }}</button>
                         </div>
-                        <div class="form-group d-md-flex">
-                            <div class="w-50">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                <label class="form-check-label" for="remember">
-                                    {{ __('Remember Me') }}
-                                </label>
-                            </div>
-                        </div>
                         <div class="text-center">
                             <p>Already a member? <a href="{{ route('login') }}">{{ __('Login') }}</a></p>
                             <p>or sign up with:</p>
