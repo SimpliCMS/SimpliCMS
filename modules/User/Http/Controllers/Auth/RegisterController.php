@@ -2,12 +2,14 @@
 
 namespace Modules\User\Http\Controllers\Auth;
 
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Modules\User\Models\User;
 use Konekt\Address\Models\PersonProxy;
 use Modules\Profile\Models\Profile;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
+use Konekt\Customer\Models\Customer;
+use Konekt\Customer\Models\CustomerType;
 use Modules\Core\Http\Controllers\Controller as BaseController;
 
 class RegisterController extends BaseController {
@@ -82,6 +84,13 @@ use RegistersUsers;
         } else {
             $lastName = $firstName; // Use first name for last name if last name is not available
         }
+        $customer = Customer::create([
+                    'firstname' => $firstName,
+                    'lastname' => $lastName,
+                    'type' => CustomerType::INDIVIDUAL
+        ]);
+
+        $user->customer_id = $customer->id;
 
         $person = PersonProxy::create([
                     'user_id' => $user->id,
