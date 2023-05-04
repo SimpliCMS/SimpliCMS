@@ -15,55 +15,55 @@
                             @csrf
                             @method('PUT')
                             <h5>{{ __('Billing Address') }}</h5>
-                            <div class="col-12">
-                                <label for="inputAddress" class="form-label">Address</label>
+                            <div class="form-floating col-12">
                                 <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                <label for="inputAddress" class="form-label">Address</label>
                             </div>
-                            <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
+                            <div class="form-floating col-12">
                                 <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                <label for="inputAddress2" class="form-label">Address 2</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="form-floating col-md-6">
+                                <input type="text" class="form-control" id="inputCity"  placeholder="City">
                                 <label for="inputCity" class="form-label">City</label>
-                                <input type="text" class="form-control" id="inputCity">
                             </div>
-                            <div class="col-md-4">
-                                <label for="inputState" class="form-label">State</label>
+                            <div class="form-floating col-md-4">
                                 <select id="inputState" class="form-select">
                                     <option selected>Choose...</option>
                                     <option>...</option>
                                 </select>
+                                <label for="inputState" class="form-label">State</label>
                             </div>
-                            <div class="col-md-2">
+                            <div class="form-floating col-md-2">
+                                <input type="text" class="form-control" id="inputZip"  placeholder="Zip">
                                 <label for="inputZip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
                             </div>
-                            
+
                             <h5>{{ __('Shipping Address') }}</h5>
-                            <div class="col-12">
-                                <label for="inputAddress" class="form-label">Address</label>
+                            <div class="form-floating col-12">
                                 <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                                <label for="inputAddress" class="form-label">Address</label>
                             </div>
-                            <div class="col-12">
-                                <label for="inputAddress2" class="form-label">Address 2</label>
+                            <div class="form-floating col-12">
                                 <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                                <label for="inputAddress2" class="form-label">Address 2</label>
                             </div>
-                            <div class="col-md-6">
+                            <div class="form-floating col-md-6">
+                                <input type="text" class="form-control" id="inputCity"  placeholder="City">
                                 <label for="inputCity" class="form-label">City</label>
-                                <input type="text" class="form-control" id="inputCity">
                             </div>
-                            <div class="col-md-4">
-                                <label for="inputState" class="form-label">State</label>
+                            <div class="form-floating col-md-4">
                                 <select id="inputState" class="form-select">
                                     <option selected>Choose...</option>
                                     <option>...</option>
                                 </select>
+                                <label for="inputState" class="form-label">State</label>
                             </div>
-                            <div class="col-md-2">
+                            <div class="form-floating col-md-2">
+                                <input type="text" class="form-control" id="inputZip"  placeholder="Zip">
                                 <label for="inputZip" class="form-label">Zip</label>
-                                <input type="text" class="form-control" id="inputZip">
                             </div>
-                            
+
                             <div class="d-grid gap-2 mx-auto">
                                 <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
                             </div>
