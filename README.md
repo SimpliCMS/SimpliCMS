@@ -34,7 +34,6 @@ Run this command:
 php artisan core:module:migrate --seed
 ```
 
-```
 **6. Create the first admin user**:
 
 Run this command:
