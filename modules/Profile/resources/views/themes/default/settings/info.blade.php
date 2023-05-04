@@ -14,10 +14,9 @@
                 <div class="p-4 p-md-5">
                     <h3 class="text-center mt-4 mb-4">{{ __('Basic Info') }}</h3>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('profile.update', ['profile' => $profile]) }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('profile.update', ['user' => $user, 'profile' => $profile]) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-
                             <div class="form-floating mb-3 row">
                                 <input type="text" class="flatpickr flatpickr-input active" name="birthdate" id="birthdate" value="{{ $profile->person->birthdate }}" placeholder="Date of Birth">
                                 <label for="birthdate">{{ __('Date of Birth') }}</label>
@@ -32,7 +31,7 @@
                                 <label for="gender">Gender</label>
                             </div>
                             <div class="form-floating mb-3 row">
-                                <textarea class="form-control" name="bio" value="{{ $profile->person->bio }}" placeholder="Profile Bio" id="bio" style="height: 100px">@if(!empty($profile->person->bio)){{ $profile->person->bio }}@endif </textarea>
+                                <textarea class="form-control" name="bio" value="{{ $profile->person->bio }}" placeholder="Profile Bio" id="bio" style="height: 100px">{{ $profile->person->bio }}</textarea>
                                 <label for="bio">Bio</label>
                             </div>
                             <div class="d-grid gap-2 mx-auto">

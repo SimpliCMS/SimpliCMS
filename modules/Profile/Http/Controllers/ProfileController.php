@@ -69,8 +69,8 @@ class ProfileController extends Controller {
     public function update(Request $request) {
         $user = Auth::user();
         $request->validate([
-            'birthdate' => 'required|string|max:255',
-            'bio' => 'required|string|max:255',
+            'birthdate' => 'nullable|string|max:255',
+            'bio' => 'nullable|string|max:255',
         ]);
 
         $profile = Profile::where('user_id', $user->id)->first();
