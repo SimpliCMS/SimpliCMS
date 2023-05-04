@@ -61,8 +61,16 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
             ],
                 ]
         );
-
-        $this->app->concord->registerModule(\Vanilo\Admin\Providers\ModuleServiceProvider::class);
+        $this->app->concord->registerModule(\Vanilo\Admin\Providers\ModuleServiceProvider::class,
+                $config = [
+            'routes' => [
+                'prefix' => 'admin/shop',
+                'as' => 'vanilo.admin.',
+                'middleware' => ['web', 'auth', 'acl'],
+                'files' => ['admin']
+            ],
+                ]
+        );
         $this->app->concord->registerModule(\Vanilo\Adyen\Providers\ModuleServiceProvider::class);
         $this->app->concord->registerModule(\Vanilo\Braintree\Providers\ModuleServiceProvider::class);
         $this->app->concord->registerModule(\Vanilo\Euplatesc\Providers\ModuleServiceProvider::class);

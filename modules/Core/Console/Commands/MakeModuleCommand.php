@@ -91,6 +91,7 @@ class MakeModuleCommand extends Command {
 
         $routewebstub = $this->getStub('routes-web.stub');
         $routewebstub = str_replace('{module}', $moduleName, $routewebstub);
+        $routewebstub = str_replace('{moduleLower}', strtolower($moduleName), $routewebstub);
         File::put($modulePath . '/resources/routes/web.php', $routewebstub);
 
         // Create the module manifest using the stub

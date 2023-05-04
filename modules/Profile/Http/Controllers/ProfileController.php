@@ -8,6 +8,7 @@ use Modules\Core\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Konekt\User\Contracts\Avatar;
 use Modules\User\Models\User;
+use Konekt\Customer\Contracts\Customer;
 use Modules\Profile\Models\Profile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -36,10 +37,10 @@ class ProfileController extends Controller {
      * Show the form for creating a new resource.
      * @return Renderable
      */
-    public function settingsInfo() {
+    public function settingsInfo(Customer $customer) {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        return view('profile::settings.info', ['user' => $user, 'profile' => $profile]);
+        return view('profile::settings.info', ['user' => $user, 'customer' => $customer, 'profile' => $profile]);
     }
 
     /**

@@ -53,7 +53,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminWebRoutes() {
         Route::prefix('admin')
                 ->middleware('web', 'auth', 'role:admin')
-                ->namespace($this->namespace)
+                ->namespace($this->namespace.'\Admin')
                 ->group(base_path('modules/Profile/resources/routes/admin.php'));
     }    
     
@@ -66,9 +66,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function mapWebRoutes()
     {
-        $prefix = lcfirst('Profile');
-        Route::prefix($prefix)
-            ->middleware('web')
+        Route::middleware('web')
              ->namespace($this->namespace)
              ->group(base_path('modules/Profile/resources/routes/web.php'));
     }

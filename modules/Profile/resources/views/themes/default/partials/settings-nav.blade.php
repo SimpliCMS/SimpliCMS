@@ -6,6 +6,7 @@
         <li class="nav-item" role="presentation">
             <a class="nav-link" id ="info" href="{{ route('profile.settings.info') }}">{{ __('Basic Info') }}</a>
         </li>  
+       @action('profile.settings.nav', $navItems)
     </ul>
 </div>
 

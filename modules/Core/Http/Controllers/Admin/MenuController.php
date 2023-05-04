@@ -1,11 +1,12 @@
 <?php
 
-namespace Modules\Core\Http\Controllers;
+namespace Modules\Core\Http\Controllers\Admin;
 
 use Modules\Core\Models\Menu;
 use Modules\Core\Models\MenuItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\Core\Http\Controllers\Controller;
 
 class MenuController extends Controller {
 

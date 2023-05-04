@@ -20,6 +20,13 @@ class PluginServiceProvider extends ServiceProvider {
                 echo '<span class="badge badge-pill badge-secondary">' . Cart::itemCount() . '</span>';
             }
         }, 20, 1);
+
+        Eventy::addAction('profile.settings.nav', function ($navItems) {
+            $url = route('profile.settings.shop');
+            echo '        <li class="nav-item" role="presentation">
+            <a class="nav-link" id ="shop" href="'.$url.'">Shop</a>
+        </li> ';
+        }, 20, 1);
     }
 
     /**

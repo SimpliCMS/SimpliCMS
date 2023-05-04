@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::prefix('{moduleLower}')->group(function () {
     Route::get('/', function () {
         dd('This is the {module} module index page. Build something great!');
     });
+});    

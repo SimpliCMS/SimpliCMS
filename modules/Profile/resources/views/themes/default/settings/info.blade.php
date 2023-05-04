@@ -9,7 +9,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-7 col-lg-6">
-            @include('profile::partials.settings-nav')
+            @include('profile::partials.settings-nav', ['navItems' => ''])
             <div class="card shadow rounded">
                 <div class="p-4 p-md-5">
                     <h3 class="text-center mt-4 mb-4">{{ __('Basic Info') }}</h3>
@@ -21,7 +21,6 @@
                                 <input type="text" class="flatpickr flatpickr-input active" name="birthdate" id="birthdate" value="{{ $profile->person->birthdate }}" placeholder="Date of Birth">
                                 <label for="birthdate">{{ __('Date of Birth') }}</label>
                             </div>
-
                             <div class="form-floating mb-3 row">
                                 <select class="form-select" name="gender" id="gender" aria-label="Floating label select example">
                                     <option value=" ">Gender</option>
