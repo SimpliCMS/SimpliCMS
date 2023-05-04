@@ -1,19 +1,31 @@
 <?php
 
-function module_path($module) {
-    $location = base_path();
-    $modulesPath = $location . '/' . 'modules';
+namespace Modules\Core\Helpers;
 
-    return $modulesPath . '/' . $module;
-}
+use Modules\Core\Models\Menu;
+use Modules\Core\Models\MenuItem;
 
-function module_Viewpath($module, $theme) {
-    $location = base_path();
-    $modulesPath = $location . '/' . 'modules';
+class Helper {
 
-    return $modulesPath . '/' . $module . '/resources/views/themes/' . $theme;
-}
+    public static function module_path($module) {
+        $location = base_path();
+        $modulesPath = $location . '/' . 'modules';
 
-function showMenu($menuName, $alignment = 'left') {
-    
+        return $modulesPath . '/' . $module;
+    }
+
+    public static function module_Viewpath($module, $theme) {
+        $location = base_path();
+        $modulesPath = $location . '/' . 'modules';
+
+        return $modulesPath . '/' . $module . '/resources/views/themes/' . $theme;
+    }
+
+    public static function getMenu($menuName) {
+
+        $menu = Menu::with('items.children')->where('name', $menuName)->first();
+        $menuItems = MenuItem::where('menu_id', $menu->id)->orderBy('order', 'DESC')->get();
+        return $menuItems;
+    }
+
 }
