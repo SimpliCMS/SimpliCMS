@@ -18,11 +18,11 @@
                             @csrf
                             @method('PUT')
                             <div class="mb-3">
-                                <label for="avatar" class="form-label">{{ __('Update Avatar') }}</label>
+                                <label for="avatar" class="form-label">@if (empty($profile->avatar_data)){{ __('Upload Avatar') }}@else{{ __('Update Avatar') }}@endif</label>
                                 <input type="file" class="form-control" id="avatar" name="avatar">
                             </div>
                             <div class="d-grid gap-2 mx-auto">
-                                <button type="submit" class="btn btn-primary">{{ __('Update Avatar') }}</button>
+                                <button type="submit" class="btn btn-primary">@if (empty($profile->avatar_data)){{ __('Upload Avatar') }}@else{{ __('Update Avatar') }}@endif</button>
                                 @if (!empty($profile->avatar_data))
                                 <a class="btn btn-danger" href="{{ route('profile.delete.avatar', ['user' => $user, 'profile' => $profile]) }}">{{ __('Delete Avatar') }}</a>
                                 @endif
