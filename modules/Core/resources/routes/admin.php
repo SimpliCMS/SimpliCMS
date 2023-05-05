@@ -27,3 +27,14 @@ Route::group(['prefix' => 'menus'], function () {
     Route::put('menus/{menu}/menu_items/{menuItem}', 'MenuItemController@update')->name('menus.menu_items.update');
     Route::delete('menus/{menu}/menu_items/{menuItem}', 'MenuItemController@destroy')->name('menus.menu_items.destroy');
 });
+
+Route::group(['prefix' => 'pages'], function () {
+    // Menu routes
+    Route::get('/', 'PageController@index')->name('pages.admin.index');
+    Route::post('/', 'PageController@store')->name('pages.admin.store');
+    Route::get('create', 'PageController@create')->name('pages.admin.create');
+    Route::get('{page}', 'PageController@show')->name('pages.admin.show');
+    Route::put('{page}', 'PageController@update')->name('pages.admin.update');
+    Route::delete('{page}', 'PageController@destroy')->name('pages.admin.destroy');
+    Route::get('{page}/edit', 'PageController@edit')->name('pages.admin.edit');
+});

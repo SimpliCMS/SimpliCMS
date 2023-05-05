@@ -74,4 +74,3 @@ Route::prefix('shop')->group(function () {
         Route::post('edit', 'ShopProfileController@update')->name('profile.settings.shop.update');
     });
 });
-

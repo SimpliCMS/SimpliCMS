@@ -10,7 +10,8 @@
     "require": {
         "shipu/themevel": "^3.0",
         "tormjens/eventy": "^0.8",
-        "laravelcollective/html": "^6.2.1"
+        "laravelcollective/html": "^6.2.1",
+        "tinymce/tinymce": "^6.4.2"
     },
     "extra": {
         "laravel": {

@@ -15,6 +15,8 @@ class AdminMenuServiceProvider extends ServiceProvider {
             $cms = $adminMenu->getItem('cms_group');
             $cms
               ->addSubItem('menus', __('Menus'), '/admin/menus')->activateOnUrls('admin/menus/*');
+            $cms
+              ->addSubItem('pages', __('Pages'), '/admin/pages')->activateOnUrls('admin/pages/*');
         }
     }
 
