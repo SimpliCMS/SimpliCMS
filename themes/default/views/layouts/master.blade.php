@@ -7,7 +7,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'SimpliCMS') }}</title>
+        <title>@hasSection('title')@yield('title') &middot; @endif{{ config('app.name', 'SimpliCMS') }}</title>
         @include('layouts._favicons')
         <!-- Fonts -->
         <link rel="dns-prefetch" href="https://fonts.gstatic.com">

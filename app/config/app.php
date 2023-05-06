@@ -152,9 +152,9 @@ return [
         Modules\User\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         Modules\Core\Providers\EventServiceProvider::class,
-        Modules\Core\Providers\RouteServiceProvider::class,
         Modules\Admin\Providers\AdminSettingsServiceProvider::class,
         Modules\Admin\Providers\AdminMenuServiceProvider::class,
+        Modules\Core\Providers\RouteServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------

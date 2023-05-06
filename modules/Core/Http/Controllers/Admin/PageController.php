@@ -38,7 +38,7 @@ class PageController extends Controller {
 
         $page = Page::create($request->only(['title', 'slug', 'content']));
 
-        return redirect()->route('pages.index');
+        return redirect()->route('pages.admin.index');
     }
 
     /**

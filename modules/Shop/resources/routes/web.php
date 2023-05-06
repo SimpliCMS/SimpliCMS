@@ -12,7 +12,7 @@
  */
 Route::prefix('shop')->group(function () {
     Route::group(['as' => 'product.'], function () {
-        Route::get('index', 'ProductController@index')->name('index');
+        Route::get('/', 'ProductController@index')->name('index');
         Route::get('c/{taxonomyName}/{taxon}', 'ProductController@index')->name('category');
         Route::get('p/{slug}', 'ProductController@show')->name('show');
     });

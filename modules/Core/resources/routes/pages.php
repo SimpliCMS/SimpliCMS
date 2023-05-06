@@ -11,5 +11,4 @@
   |
  */
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('page/{slug}', 'PageController@show');
+Route::get('/{slug}', 'PageController@show')->where('slug', '.*');

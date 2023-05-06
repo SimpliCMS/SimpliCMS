@@ -13,7 +13,7 @@ class AdminMenuServiceProvider extends ServiceProvider {
         // Add default menu items to sidebar
         if ($adminMenu = Menu::get('admin')) {
 
-            $dashboard = $adminMenu->addItem('dashboard', __('Dashboard'), ['url' => ['/admin']])->data('order', 1);
+            $dashboard = $adminMenu->addItem('dashboard', __('Dashboard'), ['url' => ['/admin/dashboard']])->data('order', 1);
 
             $cms = $adminMenu->addItem('cms_group', __('CMS'));
             // CRM Group
