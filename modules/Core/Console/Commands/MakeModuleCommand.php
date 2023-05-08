@@ -102,6 +102,7 @@ class MakeModuleCommand extends Command {
         // Create the module composer file using the stub
         $composerstub = $this->getStub('composer.stub');
         $composerstub = str_replace('{module}', $moduleName, $composerstub);
+        $composerstub = str_replace('{moduleLower}', strtolower($moduleName), $composerstub);
         File::put($modulePath . '/composer.json', $composerstub);
         
         // Output success message

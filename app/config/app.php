@@ -12,7 +12,7 @@ return [
       |
      */
 
-    'name' => env('APP_NAME', 'Vanilo Demo'),
+    'name' => env('APP_NAME', 'SimpliCMS'),
     /*
       |--------------------------------------------------------------------------
       | Application Environment
@@ -152,9 +152,9 @@ return [
         Modules\User\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         Modules\Core\Providers\EventServiceProvider::class,
+        Modules\Core\Providers\RouteServiceProvider::class,
         Modules\Admin\Providers\AdminSettingsServiceProvider::class,
         Modules\Admin\Providers\AdminMenuServiceProvider::class,
-        Modules\Core\Providers\RouteServiceProvider::class,
     ],
     /*
       |--------------------------------------------------------------------------
@@ -200,6 +200,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Core' => Modules\Core\Helpers\Helper::class,
+
     ],
 ];

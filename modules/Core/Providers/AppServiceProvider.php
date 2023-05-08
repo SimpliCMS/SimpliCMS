@@ -5,6 +5,7 @@ namespace Modules\Core\Providers;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
+use Modules\Core\Helpers\Helper;
 use Schema;
 use Menu;
 use Blade;
@@ -26,11 +27,7 @@ class AppServiceProvider extends ServiceProvider {
         $this->app->concord->registerModel(\Konekt\User\Contracts\Profile::class, \Modules\Profile\Models\Profile::class);
         $this->app->concord->registerModel(\Konekt\Address\Contracts\Person::class, \Modules\Profile\Models\Person::class);
         
-        Blade::directive('bootstrapjs', function ($string) {
-            $url = $app['url']->to('/resources/js/bootstrap.bundle.js');
-            $script = '<script src="' . $url . '"></script>';
-            return $script;
-        });
+        $this->app->alias(Helper::class, 'Core');
     }
 
     /**
