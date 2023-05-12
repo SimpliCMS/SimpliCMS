@@ -15,7 +15,7 @@
         !!}
         <div class="card card-accent-secondary">
             <div class="card-header">
-                {{ __('Product Data') }}
+                {{ __('Service Data') }}
             </div>
             <div class="card-body">
                 @include('bookable-admin::partials.form._form')
@@ -30,7 +30,7 @@
     </div>
 
     <div class="col-12 col-lg-4 col-xl-3">
-        @include('bookable-admin::partials.media._edit', ['model' => $bookable])
+        @include('admin::partials.media._edit', ['model' => $bookable])
     </div>
 
 </div>

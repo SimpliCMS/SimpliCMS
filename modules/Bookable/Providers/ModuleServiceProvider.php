@@ -4,24 +4,38 @@ namespace Modules\Bookable\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Modules\Bookable\Models\Bookable;
+use Modules\Bookable\Models\BookableState;
+use Modules\Bookable\Http\Requests\CreateBookable;
+use Modules\Bookable\Http\Requests\UpdateBookable;
 use Schema;
 
-class ModuleServiceProvider extends BaseModuleServiceProvider
-{
+class ModuleServiceProvider extends BaseModuleServiceProvider {
+
     /**
      * The namespace for the module's models.
      *
      * @var string
      */
     protected $modelNamespace = 'Modules\Bookable\Models';
+    protected $models = [
+        Bookable::class,
+    ];
+    protected $enums = [
+        BookableState::class,
+    ];
+    protected $requests = [
+        CreateBookable::class,
+        UpdateBookable::class,
+    ];
 
     /**
      * Bootstrap the module services.
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
+        parent::boot();
         // Your module's boot logic here
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
@@ -35,11 +49,10 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
      *
      * @return void
      */
-    public function register()
-    {
+    public function register() {
         // Your module's register logic here
     }
-    
+
     public function ViewPaths() {
         $moduleLower = lcfirst('Bookable');
         if (Schema::hasTable('settings')) {
@@ -67,7 +80,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
             base_path("themes/$currentTheme/views/modules/Bookable"),
         ];
 
-        return $this->loadViewsFrom($views, $moduleLower.'-admin');
+        return $this->loadViewsFrom($views, $moduleLower . '-admin');
     }
-}
 
+}

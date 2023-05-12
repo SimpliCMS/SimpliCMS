@@ -9,7 +9,10 @@ use Illuminate\Validation\Rule;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\LazyCollection;
 use Modules\Core\Http\Controllers\Controller;
-use Modules\Bookable\Models\Bookable;
+use Modules\Bookable\Contracts\Requests\CreateBookable;
+use Modules\Bookable\Contracts\Requests\UpdateBookable;
+use Modules\Bookable\Contracts\Bookable;
+use Modules\Bookable\Models\BookableProxy;
 use Modules\Bookable\Models\BookableState;
 
 class BookableController extends Controller {
@@ -19,7 +22,7 @@ class BookableController extends Controller {
      * @return Renderable
      */
     public function index() {
-        $bookables = Bookable::all();
+        $bookables = BookableProxy::all();
         return view('bookable-admin::index', compact('bookables'));
     }
 
@@ -39,29 +42,33 @@ class BookableController extends Controller {
      * @param Request $request
      * @return Renderable
      */
-    public function store(Request $request) {
-        $request->validate([
-            'name' => 'required|min:2|max:255',
-            'sku' => 'nullable|unique:products',
-            'state' => ['required', Rule::in(BookableState::values())],
-            'price' => 'nullable|numeric',
-            'original_price' => 'sometimes|nullable|numeric',
-            'images' => 'nullable',
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,pjpg,png,gif,webp'
-        ]);
+    public function store(CreateBookable $request) {
+        try {
+            $bookable = BookableProxy::create($request->except('images'));
+            flash()->success(__(':name has been created', ['name' => $bookable->name]));
 
-        $bookable = Bookable::create($request->except('images'));
-        if ($request->has('images')) {
-            $bookable->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
-                $fileAdder->toMediaCollection();
-            });
+            try {
+                if (!empty($request->files->filter('images'))) {
+                    $bookable->addMultipleMediaFromRequest(['images'])->each(function ($fileAdder) {
+                        $fileAdder->toMediaCollection();
+                    });
+                }
+            } catch (\Exception $e) { // Here we already have the service created
+                flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
+
+                return redirect()->route('bookables.admin.edit', ['bookable' => $bookable]);
+            }
+        } catch (\Exception $e) {
+            flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
+
+            return redirect()->back()->withInput();
         }
         return redirect()->route('bookables.admin.index');
     }
 
     /**
      * Show the specified resource.
-     * @param int $id
+     * @param int $bookable
      * @return Renderable
      */
     public function show(Bookable $bookable) {
@@ -72,7 +79,7 @@ class BookableController extends Controller {
 
     /**
      * Show the form for editing the specified resource.
-     * @param int $id
+     * @param int $bookable
      * @return Renderable
      */
     public function edit(Bookable $bookable) {
@@ -85,32 +92,41 @@ class BookableController extends Controller {
     /**
      * Update the specified resource in storage.
      * @param Request $request
-     * @param int $id
+     * @param int $bookable
      * @return Renderable
      */
-    public function update(Request $request, Bookable $bookable) {
-        $request->validate([
-            'name' => 'required|min:2|max:255',
-            'sku' => 'nullable|unique:products',
-            'state' => ['required', Rule::in(BookableState::values())],
-            'price' => 'nullable|numeric',
-            'original_price' => 'sometimes|nullable|numeric',
-            'images' => 'nullable',
-            'images.*' => 'nullable|image|mimes:jpg,jpeg,pjpg,png,gif,webp'
-        ]);
+    public function update(Bookable $bookable, UpdateBookable $request) {
+        try {
+            $bookable->update($request->all());
 
-        $bookable->update($request->except('images'));
+            flash()->success(__(':name has been updated', ['name' => $bookable->name]));
+        } catch (\Exception $e) {
+            flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
+
+            return redirect()->back()->withInput();
+        }
 
         return back()->with('success', 'Service updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
-     * @param int $id
+     * @param int $bookable
      * @return Renderable
      */
     public function destroy(Bookable $bookable) {
-        //
+        try {
+            $name = $bookable->name;
+            $bookable->delete();
+
+            flash()->warning(__(':name has been deleted', ['name' => $name]));
+        } catch (\Exception $e) {
+            flash()->error(__('Error: :msg', ['msg' => $e->getMessage()]));
+
+            return redirect()->back();
+        }
+
+        return redirect(route('bookables.admin.index'));
     }
 
 }

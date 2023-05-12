@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                @include('bookable-admin::partials.media._create')
+                @include('admin::partials.media._create')
             </div>
     </form>
 </div>

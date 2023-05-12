@@ -19,7 +19,7 @@
         "laravel": {
             "providers": [],
             "aliases": {
-
+                "Core": "Modules\\Core\\Helpers\\Helper"
             }
         }
     },

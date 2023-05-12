@@ -11,3 +11,8 @@
   |
  */
 Route::get('/', 'DashboardController@index')->name('admin.index');
+Route::resource('media', 'Modules\Admin\Http\Controllers\Admin\MediaController')->only(['update', 'destroy', 'store'])->names([
+    'update' => 'admin.media.update',
+    'destroy' => 'admin.media.destroy',
+    'store' => 'admin.media.store'
+]);;

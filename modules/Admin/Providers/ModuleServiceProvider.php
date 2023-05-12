@@ -4,6 +4,7 @@ namespace Modules\Admin\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Konekt\AppShell\Providers\SettingsProvider;
+use Modules\Admin\Http\Requests\CreateMedia;
 use Schema;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider {
@@ -14,6 +15,9 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      * @var string
      */
     protected $modelNamespace = 'Modules\Admin\Models';
+    protected $requests = [
+        CreateMedia::class,
+    ];
 
     /**
      * Bootstrap the module services.

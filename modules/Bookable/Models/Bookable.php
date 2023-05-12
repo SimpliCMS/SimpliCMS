@@ -5,15 +5,18 @@ namespace Modules\Bookable\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Modules\Bookable\Models\BookableState;
+use Modules\Bookable\Contracts\Bookable as BookableContract;
 use Konekt\Enum\Eloquent\CastsEnums;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Bookable extends Model implements HasMedia {
+class Bookable extends Model implements BookableContract, HasMedia {
 
     use InteractsWithMedia;
+
 //    use CastsEnums;
     use Sluggable;
     use SluggableScopeHelpers;
@@ -82,6 +85,13 @@ class Bookable extends Model implements HasMedia {
                 'source' => 'name'
             ]
         ];
+    }
+
+    public function registerMediaConversions(Media $media = null): void {
+        $this->addMediaConversion('thumbnail')
+                ->width(368)
+                ->height(232)
+                ->sharpen(10);
     }
 
 }

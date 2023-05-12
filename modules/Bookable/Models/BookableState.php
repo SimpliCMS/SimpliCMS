@@ -4,9 +4,10 @@ namespace Modules\Bookable\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Modules\Bookable\Contracts\BookableState as BookableStateContract;
 use Konekt\Enum\Enum;
 
-class BookableState extends Enum {
+class BookableState extends Enum implements BookableStateContract {
 
     public const __DEFAULT = self::DRAFT;
     public const DRAFT = 'draft';
