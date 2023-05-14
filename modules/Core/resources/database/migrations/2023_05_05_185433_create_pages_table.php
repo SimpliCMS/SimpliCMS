@@ -12,7 +12,7 @@ class CreatePagesTable extends Migration {
             $table->char('title');
             $table->char('slug')->index();
             $table->text('content');
-            $table->dateTime('published_at');
+            $table->dateTime('published_at')->nullable();
             $table->softDeletesTz();
             $table->timestamps();
         });

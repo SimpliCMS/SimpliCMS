@@ -35,6 +35,20 @@ class CoreMenus extends Seeder {
                     "menu_id" => $mainMenu->id,
                     'is_internal' => 1
         ]);
+        
+        $privacyMenuItem = MenuItem::create([
+                    "name" => 'Privacy',
+                    "url" => '/page/privacy',
+                    "menu_id" => $footerMenu->id,
+                    'is_internal' => 0
+        ]);
+        
+         $termsMenuItem = MenuItem::create([
+                    "name" => 'Terms',
+                    "url" => '/page/terms',
+                    "menu_id" => $footerMenu->id,
+                    'is_internal' => 0
+        ]);
     }
 
 }

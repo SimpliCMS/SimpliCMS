@@ -15,7 +15,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
      * @return void
      */
     public function boot() {
-        parent::boot();
+
         $this->app->register(CoreSettingsServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
         $this->app->register(PluginServiceProvider::class);

@@ -30,8 +30,16 @@ class AppServiceProvider extends ServiceProvider {
         $this->app->concord->registerModel(\Konekt\Address\Contracts\Person::class, \Modules\Profile\Models\Person::class);
 //        $this->app->alias(Helper::class, 'Core');
         // Load default modules
-        $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class);
-        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class);
+        $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class,
+                $config = [
+            'routes' => false
+                ]
+        );
+        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class,
+                $config = [
+            'routes' => false
+                ]
+        );
 
         // Dynamically load additionally installed modules
         $modulesPath = base_path('modules');
@@ -59,7 +67,11 @@ class AppServiceProvider extends ServiceProvider {
 
         // Register the module service providers with Concord
         foreach ($moduleProviders as $moduleProvider) {
-            $this->app->concord->registerModule($moduleProvider);
+            $this->app->concord->registerModule($moduleProvider,
+                    $config = [
+                'routes' => false
+                    ]
+            );
         }
     }
 

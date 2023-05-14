@@ -15,4 +15,4 @@ Route::resource('media', 'Modules\Admin\Http\Controllers\Admin\MediaController')
     'update' => 'admin.media.update',
     'destroy' => 'admin.media.destroy',
     'store' => 'admin.media.store'
-]);;
+]);
