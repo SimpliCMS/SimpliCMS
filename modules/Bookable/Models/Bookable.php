@@ -74,11 +74,6 @@ class Bookable extends Model implements BookableContract, HasMedia {
         return $query->whereIn('state', array_diff(BookableState::values(), BookableState::getActiveStates()));
     }
 
-    /**
-     * Return the sluggable configuration array for this model.
-     *
-     * @return array
-     */
     public function sluggable(): array {
         return [
             'slug' => [
@@ -87,11 +82,17 @@ class Bookable extends Model implements BookableContract, HasMedia {
         ];
     }
 
-    public function registerMediaConversions(Media $media = null): void {
-        $this->addMediaConversion('thumbnail')
-                ->width(368)
-                ->height(232)
-                ->sharpen(10);
+    public function registerMediaCollections(): void {
+        $this
+                ->addMediaCollection('default')
+                ->useDisk('bookable')
+                ->singleFile()
+                ->registerMediaConversions(function (Media $media) {
+                    $this
+                    ->addMediaConversion('thumbnail')
+                    ->width(100)
+                    ->height(100);
+                });
     }
 
 }

@@ -1,0 +1,27 @@
+{
+    "name": "simplicms/video",
+    "description": "",
+    "authors": [
+        {
+            "name": "Placeholder",
+            "email": "placeholder"
+        }
+    ],
+    "require": {
+        "php-ffmpeg/php-ffmpeg": "^1.1",
+        "videojs/video.js": "^8.3"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Video\\": ""
+        }
+    }
+}

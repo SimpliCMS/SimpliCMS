@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Profile\Providers;
+namespace Modules\Video\Providers;
 
 use Konekt\Concord\BaseModuleServiceProvider;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +13,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
      *
      * @var string
      */
-    protected $modelNamespace = 'Modules\Profile\Models';
+    protected $modelNamespace = 'Modules\Video\Models';
 
     /**
      * Bootstrap the module services.
@@ -24,7 +24,6 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     {
         // Your module's boot logic here
         $this->app->register(RouteServiceProvider::class);
-        $this->app->register(ProfileSettingsServiceProvider::class);
         $this->app->register(PluginServiceProvider::class);
         $this->ViewPaths();
         $this->adminViewPaths();
@@ -41,7 +40,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     }
     
     public function ViewPaths() {
-        $moduleLower = lcfirst('Profile');
+        $moduleLower = lcfirst('Video');
         if (Schema::hasTable('settings')) {
             $setting = DB::table('settings')->where('id', 'site.theme')->first();
             $currentTheme = $setting->value;
@@ -49,22 +48,22 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
             $currentTheme = 'default';
         }
         $views = [
-            base_path("themes/$currentTheme/views/modules/Profile"),
-            module_Viewpath('Profile', $currentTheme),
-            base_path("themes/default/views/modules/Profile"),
-            module_Viewpath('Profile', 'default'),
-            base_path("resources/views/modules/Profile"),
+            base_path("themes/$currentTheme/views/modules/Video"),
+            module_Viewpath('Video', $currentTheme),
+            base_path("themes/default/views/modules/Video"),
+            module_Viewpath('Video', 'default'),
+            base_path("resources/views/modules/Video"),
         ];
 
         return $this->loadViewsFrom($views, $moduleLower);
     }
 
     public function adminViewPaths() {
-        $moduleLower = lcfirst('Profile');
+        $moduleLower = lcfirst('Video');
         $currentTheme = 'admin';
         $views = [
-            module_Viewpath('Profile', $currentTheme),
-            base_path("themes/$currentTheme/views/modules/Profile"),
+            module_Viewpath('Video', $currentTheme),
+            base_path("themes/$currentTheme/views/modules/Video"),
         ];
 
         return $this->loadViewsFrom($views, $moduleLower.'-admin');

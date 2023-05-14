@@ -7,8 +7,12 @@ use Illuminate\Support\Carbon;
 use Konekt\User\Models\Profile as ProfileModel;
 use Konekt\User\Models\UserProxy;
 use Modules\User\Models\User;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Profile extends ProfileModel {
+class Profile extends ProfileModel implements HasMedia {
+
+    use InteractsWithMedia;
 
     /**
      * Create a new Eloquent model instance.
@@ -40,6 +44,19 @@ class Profile extends ProfileModel {
         }
 
         return $avatar;
+    }
+
+    public function registerMediaCollections(): void {
+        $this
+                ->addMediaCollection('avatar')
+                ->useDisk('profile_avatar')
+                ->singleFile()
+                ->registerMediaConversions(function (Media $media) {
+                    $this
+                    ->addMediaConversion('thumb')
+                    ->width(100)
+                    ->height(100);
+                });
     }
 
 }
