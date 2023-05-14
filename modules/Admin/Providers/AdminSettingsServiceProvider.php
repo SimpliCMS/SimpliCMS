@@ -77,11 +77,6 @@ class AdminSettingsServiceProvider extends ServiceProvider {
         'general_app',
         ['text', ['label' => __('Name')]],
         UiNameSetting::KEY
-        )
-        ->addSettingItem(
-        'general_app',
-        ['select', ['label' => __('Admin Icon Theme')]],
-        UiIconThemeSetting::KEY
         );
 
         $ui->addChildNode('general', 'defaults', __('Defaults'))

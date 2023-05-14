@@ -25,10 +25,11 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      * @return void
      */
     public function boot() {
+
         $this->app->concord->registerModule(\Konekt\AppShell\Providers\ModuleServiceProvider::class,
                 $config = [
             'ui' => [
-                'name' => 'Vanilo',
+                'name' => 'SimpliCMS',
                 'url' => '/admin'
             ]
                 ]

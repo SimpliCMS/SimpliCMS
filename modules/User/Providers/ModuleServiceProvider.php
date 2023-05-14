@@ -21,6 +21,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      * @return void
      */
     public function boot() {
+        parent::boot();
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
         $this->app->register(PluginServiceProvider::class);

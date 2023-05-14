@@ -15,38 +15,7 @@ class ModuleServiceProvider extends BaseBoxServiceProvider {
      * @return void
      */
     public function boot() {
-        // Load default modules
-        $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class);
-        $this->app->concord->registerModule(\Modules\User\Providers\ModuleServiceProvider::class);
-
-        // Dynamically load additionally installed modules
-        $modulesPath = base_path('modules');
-        $moduleProviders = [];
-
-        // Scan the modules folder
-        if (is_dir($modulesPath)) {
-            $directories = scandir($modulesPath);
-            foreach ($directories as $directory) {
-                if ($directory === 'Core' || $directory === 'Admin' || $directory === 'User') {
-                    continue;
-                }
-                if ($directory !== '.' && $directory !== '..' && is_dir($modulesPath . '/' . $directory)) {
-                    // Create the namespace for the module service provider
-                    $namespace = "\\Modules\\{$directory}\\Providers\\ModuleServiceProvider";
-
-                    // Check if the module service provider class exists
-                    if (class_exists($namespace)) {
-                        // Add the module service provider to the array
-                        $moduleProviders[] = $namespace;
-                    }
-                }
-            }
-        }
-
-        // Register the module service providers with Concord
-        foreach ($moduleProviders as $moduleProvider) {
-            $this->app->concord->registerModule($moduleProvider);
-        }
+        parent::boot();
         $this->app->register(CoreSettingsServiceProvider::class);
         $this->app->register(AdminMenuServiceProvider::class);
         $this->app->register(PluginServiceProvider::class);

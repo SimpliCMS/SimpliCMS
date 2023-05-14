@@ -14,7 +14,6 @@ class SettingsSeeder extends Seeder {
         $reg->addByKey('site.keywords');
         $reg->addByKey('site.theme');
         
-        Settings::set('appshell.ui.name', 'SimpliCMS');
         Settings::set('site.description', 'Enter your SEO site description here');
         Settings::set('site.keywords', 'Enter your SEO site keywords here');
         Settings::set('site.theme', 'default');
