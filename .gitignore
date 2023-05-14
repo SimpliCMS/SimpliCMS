@@ -17,4 +17,6 @@ yarn-error.log
 /nbproject/private/
 nbproject/project.properties
 nbproject/project.xml
+/modules/Bookable
 /modules/Shop
+/modules/Video
