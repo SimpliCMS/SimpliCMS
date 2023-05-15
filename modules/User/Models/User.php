@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 use Konekt\Acl\Traits\HasRoles;
 use Konekt\Customer\Models\CustomerProxy;
@@ -23,6 +24,7 @@ use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Models\ProfileProxy;
 use Konekt\User\Models\UserTypeProxy;
+use Modules\Video\Models\VideoProxy;
 
 class User extends Authenticatable implements UserContract {
 
@@ -94,6 +96,15 @@ class User extends Authenticatable implements UserContract {
 
     public function profile() {
         return $this->hasOne(ProfileProxy::modelClass(), 'user_id', 'id');
+    }
+
+    public function videos() {
+        if (class_exists(VideoProxy)) {
+            return $this->hasMany(VideoProxy::modelClass(), 'user_id', 'id');
+        } else {
+            // Return a default empty relationship
+            return null;
+        }
     }
 
     public function scopeActive($query) {
