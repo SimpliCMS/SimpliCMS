@@ -8,7 +8,7 @@
         }
     ],
     "require": {
-        "konekt/appshell": "^3.5"
+        "konekt/appshell": "^3.9"
     },
     "extra": {
         "laravel": {

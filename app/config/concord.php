@@ -9,7 +9,7 @@ return [
         Konekt\AppShell\Providers\ModuleServiceProvider::class => [
             'migrations' => true,
             'ui' => [
-                'name' => 'Vanilo',
+                'name' => 'SimpliCMS',
                 'url' => '/admin'
             ]
         ],

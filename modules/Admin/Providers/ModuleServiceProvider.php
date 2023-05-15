@@ -28,6 +28,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
 
         $this->app->concord->registerModule(\Konekt\AppShell\Providers\ModuleServiceProvider::class,
                 $config = [
+            'migrations' => true,
             'ui' => [
                 'name' => 'SimpliCMS',
                 'url' => '/admin'

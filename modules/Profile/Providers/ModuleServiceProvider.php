@@ -24,6 +24,7 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
     {
         parent::boot();
         // Your module's boot logic here
+        
         $this->app->register(RouteServiceProvider::class);
         $this->app->register(ProfileSettingsServiceProvider::class);
         $this->app->register(PluginServiceProvider::class);

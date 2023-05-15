@@ -57,8 +57,10 @@ class ProfileController extends Controller {
      * @param int $id
      * @return Renderable
      */
-    public function show($id) {
-        return view('profile::show');
+    public function show($username) {
+        $user = User::where('username', $username)->first();
+        $profile = Profile::where('user_id', $user->id)->first();
+        return view('profile::show', ['user' => $user, 'profile' => $profile]);
     }
 
     /**

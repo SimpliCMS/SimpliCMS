@@ -5,8 +5,8 @@ namespace Modules\Profile\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
-class RouteServiceProvider extends ServiceProvider
-{
+class RouteServiceProvider extends ServiceProvider {
+
     /**
      * This namespace is applied to your controller routes.
      *
@@ -21,11 +21,16 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         //
 
         parent::boot();
+        $this->app->booted(function () {
+            // Load your additional route file here
+            Route::middleware('web')
+                    ->namespace($this->namespace)
+                    ->group(base_path('modules/Profile/resources/routes/catch-all.php'));
+        });
     }
 
     /**
@@ -33,12 +38,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function map()
-    {
+    public function map() {
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
-        
+
         $this->mapAdminWebRoutes();
         //
     }
@@ -53,10 +57,10 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAdminWebRoutes() {
         Route::prefix('admin')
                 ->middleware('web', 'auth', 'role:admin')
-                ->namespace($this->namespace.'\Admin')
+                ->namespace($this->namespace . '\Admin')
                 ->group(base_path('modules/Profile/resources/routes/admin.php'));
-    }    
-    
+    }
+
     /**
      * Define the "web" routes for the application.
      *
@@ -64,11 +68,10 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapWebRoutes()
-    {
+    protected function mapWebRoutes() {
         Route::middleware('web')
-             ->namespace($this->namespace)
-             ->group(base_path('modules/Profile/resources/routes/web.php'));
+                ->namespace($this->namespace)
+                ->group(base_path('modules/Profile/resources/routes/web.php'));
     }
 
     /**
@@ -78,12 +81,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    protected function mapApiRoutes()
-    {
+    protected function mapApiRoutes() {
         Route::prefix('api')
-             ->middleware('api')
-             ->namespace($this->namespace)
-             ->group(base_path('modules/Profile/resources/routes/api.php'));
+                ->middleware('api')
+                ->namespace($this->namespace)
+                ->group(base_path('modules/Profile/resources/routes/api.php'));
     }
-}
 
+}
