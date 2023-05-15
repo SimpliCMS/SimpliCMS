@@ -29,7 +29,22 @@ class AppServiceProvider extends ServiceProvider {
         $this->app->concord->registerModel(\Konekt\User\Contracts\Profile::class, \Modules\Profile\Models\Profile::class);
         $this->app->concord->registerModel(\Konekt\Address\Contracts\Person::class, \Modules\Profile\Models\Person::class);
 //        $this->app->alias(Helper::class, 'Core');
+
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register() {
         // Load default modules
+        $this->app->concord->registerModule(\Modules\Core\Providers\ModuleServiceProvider::class,
+                $config = [
+            'migrations' => false,
+            'routes' => false
+                ]
+        );
         $this->app->concord->registerModule(\Modules\Admin\Providers\ModuleServiceProvider::class,
                 $config = [
             'routes' => false
@@ -73,15 +88,6 @@ class AppServiceProvider extends ServiceProvider {
                     ]
             );
         }
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register() {
-        // Override the default URL generator with your custom implementation
     }
 
 }

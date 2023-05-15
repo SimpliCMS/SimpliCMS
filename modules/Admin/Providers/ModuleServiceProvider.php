@@ -26,15 +26,6 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      */
     public function boot() {
 
-        $this->app->concord->registerModule(\Konekt\AppShell\Providers\ModuleServiceProvider::class,
-                $config = [
-            'migrations' => true,
-            'ui' => [
-                'name' => 'SimpliCMS',
-                'url' => '/admin'
-            ]
-                ]
-        );
 
 //        $this->app->bind(AppShellProvider::class, AppShellServiceProvider::class);
         $this->app->bind(SettingsProvider::class, AdminSettingsServiceProvider::class);
@@ -72,6 +63,15 @@ class ModuleServiceProvider extends BaseModuleServiceProvider {
      */
     public function register() {
         // Your module's register logic here
+        $this->app->concord->registerModule(\Konekt\AppShell\Providers\ModuleServiceProvider::class,
+                $config = [
+            'migrations' => true,
+            'ui' => [
+                'name' => 'SimpliCMS',
+                'url' => '/admin'
+            ]
+                ]
+        );
     }
 
 }

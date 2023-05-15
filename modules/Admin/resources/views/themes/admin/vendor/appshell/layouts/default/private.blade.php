@@ -22,6 +22,7 @@
             ]) !!}
             ;
         </script>
+        @stack('style')
     </head>
     <body>
         <!-- id=app is deprecated as of AppShell 3.0 and will be removed in v4.0  -->
