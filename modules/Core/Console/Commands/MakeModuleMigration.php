@@ -36,7 +36,12 @@ class MakeModuleMigration extends Command {
         // Generate the migration file content using a stub
         $stubPath = base_path('/modules/Core/Console/Commands/stubs/migration.stub');
         $stubContent = File::get($stubPath);
-        $stubContent = str_replace('{{migrationName}}', $migrationName, $stubContent);
+        $string = $stubContent;
+        $studlystring = $migrationName;
+        $studlyCase = Str::studly($studlystring);
+        $search = array('{{migrationName}}', '{{migrationNameStudly}}');
+        $replace = array($migrationName, $studlyCase);
+        $stubContent = str_replace($search, $replace, $string);
 
         // Save the migration file
         $filePath = $migrationsPath . '/' . $fileName;
