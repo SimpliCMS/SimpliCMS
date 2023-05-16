@@ -4,7 +4,7 @@ namespace Modules\{module}\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AdminMenuServiceProvider extends ServiceProvider
+class {module}MenuServiceProvider extends ServiceProvider
 {
     
     /**

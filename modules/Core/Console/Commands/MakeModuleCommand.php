@@ -85,10 +85,10 @@ class MakeModuleCommand extends Command {
         $adminmenuserviceproviderstub = str_replace('{module}', $moduleName, $adminmenuserviceproviderstub);
         File::put($modulePath . '/Providers/AdminMenuServiceProvider.php', $adminmenuserviceproviderstub);
 
-        // Create the AdminMenuServiceProvider.php file using the stub
-        $adminmenuserviceproviderstub = $this->getStub('admin-menu-service-provider.stub');
-        $adminmenuserviceproviderstub = str_replace('{module}', $moduleName, $adminmenuserviceproviderstub);
-        File::put($modulePath . '/Providers/AdminMenuServiceProvider.php', $adminmenuserviceproviderstub);
+        // Create the SettingsServiceProvider.php file using the stub
+        $settingsserviceproviderstub = $this->getStub('module-settings-service-provider.stub');
+        $settingsserviceproviderstub = str_replace('{module}', $moduleName, $settingsserviceproviderstub);
+        File::put($modulePath . '/Providers/'.$moduleName.'SettingsServiceProvider.php', $settingsserviceproviderstub);
 
         // Create the route files using the stubs
         $routeadminstub = $this->getStub('routes-admin.stub');
