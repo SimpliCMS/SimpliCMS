@@ -47,10 +47,18 @@ class Profile extends ProfileModel implements HasMedia {
     }
 
     public function registerMediaCollections(): void {
-        $this
-                ->addMediaCollection('avatar')
+        $this->addMediaCollection('avatar')
                 ->useDisk('profile_avatar')
                 ->singleFile()
+                ->registerMediaConversions(function (Media $media) {
+                    $this
+                    ->addMediaConversion('thumb')
+                    ->width(100)
+                    ->height(100);
+                });
+
+        $this->addMediaCollection('cover-photos')
+                ->useDisk('profile_cover')
                 ->registerMediaConversions(function (Media $media) {
                     $this
                     ->addMediaConversion('thumb')

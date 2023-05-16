@@ -79,7 +79,17 @@ class MakeModuleCommand extends Command {
         $pluginserviceproviderstub = $this->getStub('plugin-service-provider.stub');
         $pluginserviceproviderstub = str_replace('{module}', $moduleName, $pluginserviceproviderstub);
         File::put($modulePath . '/Providers/PluginServiceProvider.php', $pluginserviceproviderstub);
-        
+
+        // Create the AdminMenuServiceProvider.php file using the stub
+        $adminmenuserviceproviderstub = $this->getStub('admin-menu-service-provider.stub');
+        $adminmenuserviceproviderstub = str_replace('{module}', $moduleName, $adminmenuserviceproviderstub);
+        File::put($modulePath . '/Providers/AdminMenuServiceProvider.php', $adminmenuserviceproviderstub);
+
+        // Create the AdminMenuServiceProvider.php file using the stub
+        $adminmenuserviceproviderstub = $this->getStub('admin-menu-service-provider.stub');
+        $adminmenuserviceproviderstub = str_replace('{module}', $moduleName, $adminmenuserviceproviderstub);
+        File::put($modulePath . '/Providers/AdminMenuServiceProvider.php', $adminmenuserviceproviderstub);
+
         // Create the route files using the stubs
         $routeadminstub = $this->getStub('routes-admin.stub');
         $routeadminstub = str_replace('{module}', $moduleName, $routeadminstub);
@@ -104,7 +114,7 @@ class MakeModuleCommand extends Command {
         $composerstub = str_replace('{module}', $moduleName, $composerstub);
         $composerstub = str_replace('{moduleLower}', strtolower($moduleName), $composerstub);
         File::put($modulePath . '/composer.json', $composerstub);
-        
+
         // Output success message
         $this->info("Module [$moduleName] created successfully.");
     }

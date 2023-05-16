@@ -21,6 +21,12 @@ class ProfileSettingsServiceProvider extends ServiceProvider {
             'url' => env('APP_URL').'app/storage/app/profile/avatars',
             'visibility' => 'public',
         ]);
+        Config::set('filesystems.disks.profile_cover', [
+            'driver' => 'local',
+            'root' => storage_path('app/profile/covers'),
+            'url' => env('APP_URL').'app/storage/app/profile/covers',
+            'visibility' => 'public',
+        ]);
     }
 
     /**

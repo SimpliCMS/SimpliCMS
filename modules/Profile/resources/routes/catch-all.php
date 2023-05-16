@@ -10,4 +10,4 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{username}', 'ProfileController@show')->name('profile.show')->where('username', '.*');
+Route::get('/{username}', 'ProfileController@show')->name('profile.show');
