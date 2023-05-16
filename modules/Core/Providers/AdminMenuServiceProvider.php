@@ -8,16 +8,19 @@ use Konekt\Menu\Facades\Menu;
 class AdminMenuServiceProvider extends ServiceProvider {
 
     public function boot() {
+        $this->app->booted(function () {
+            // Add default menu items to sidebar
+            if ($adminMenu = Menu::get('admin')) {
 
-        // Add default menu items to sidebar
-        if ($adminMenu = Menu::get('admin')) {
-
-            $cms = $adminMenu->getItem('cms_group');
-            $cms
-              ->addSubItem('menus', __('Menus'), '/admin/menus')->activateOnUrls('admin/menus/*');
-            $cms
-              ->addSubItem('pages', __('Pages'), '/admin/pages')->activateOnUrls('admin/pages/*');
-        }
+                $cms = $adminMenu->getItem('cms_group');
+                $cms
+                        ->addSubItem('menus', __('Menus'),  ['route' => 'menus.index'])
+                        ->activateOnUrls($this->routeWildcard('menus.index'));
+                $cms
+                        ->addSubItem('pages', __('Pages'),  ['route' => 'pages.admin.index'])
+                        ->activateOnUrls($this->routeWildcard('pages.admin.index'));
+            }
+        });
     }
 
     public function register() {

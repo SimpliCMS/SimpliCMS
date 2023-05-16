@@ -65,7 +65,7 @@
                             </button>
 
                             <button type="button" class="btn btn-link btn-floating mx-1">
-                                <i class="fab fa-github"></i>
+                                <i class="fa-brands fa-microsoft"></i>
                             </button>
                         </div>
                     </form>
