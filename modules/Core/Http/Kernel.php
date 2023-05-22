@@ -59,6 +59,7 @@ class Kernel extends HttpKernel {
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'role' => \Konekt\Acl\Http\Middleware\RoleMiddleware::class,
         'permission' => \Konekt\Acl\Http\Middleware\PermissionMiddleware::class,
+        'internal.only' => \Modules\Core\Http\Middleware\InternalOnly::class,
     ];
 
 }
