@@ -18,8 +18,9 @@ use Konekt\User\Events\UserWasActivated;
 use Konekt\User\Events\UserWasCreated;
 use Konekt\User\Events\UserWasDeleted;
 use Konekt\User\Events\UserWasInactivated;
-use Modules\Profile\Models\Profile;
 use Modules\Profile\Models\Person;
+use Modules\Like\Contracts\Likeable;
+use Modules\Like\Models\Like;
 use Konekt\User\Contracts\Profile as ProfileContract;
 use Konekt\User\Contracts\User as UserContract;
 use Konekt\User\Models\ProfileProxy;
@@ -98,15 +99,6 @@ class User extends Authenticatable implements UserContract {
         return $this->hasOne(ProfileProxy::modelClass(), 'user_id', 'id');
     }
 
-    public function videos() {
-        if (class_exists(VideoProxy)) {
-            return $this->hasMany(VideoProxy::modelClass(), 'user_id', 'id');
-        } else {
-            // Return a default empty relationship
-            return null;
-        }
-    }
-
     public function scopeActive($query) {
         return $query->where('is_active', true);
     }
@@ -133,6 +125,45 @@ class User extends Authenticatable implements UserContract {
         }
 
         return CustomerProxy::all()->sortBy('name');
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
+    }
+
+    public function like(Likeable $likeable): self {
+        if ($this->hasLiked($likeable)) {
+            return $this;
+        }
+
+        (new Like())
+                ->user()->associate($this)
+                ->likeable()->associate($likeable)
+                ->save();
+
+        return $this;
+    }
+
+    public function unlike(Likeable $likeable): self {
+        if (!$this->hasLiked($likeable)) {
+            return $this;
+        }
+
+        $likeable->likes()
+                ->whereHas('user', fn($q) => $q->whereId($this->id))
+                ->delete();
+
+        return $this;
+    }
+
+    public function hasLiked(Likeable $likeable): bool {
+        if (!$likeable->exists) {
+            return false;
+        }
+
+        return $likeable->likes()
+                        ->whereHas('user', fn($q) => $q->whereId($this->id))
+                        ->exists();
     }
 
 }
