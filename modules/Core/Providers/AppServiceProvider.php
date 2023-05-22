@@ -29,7 +29,6 @@ class AppServiceProvider extends ServiceProvider {
         $this->app->concord->registerModel(\Konekt\User\Contracts\Profile::class, \Modules\Profile\Models\Profile::class);
         $this->app->concord->registerModel(\Konekt\Address\Contracts\Person::class, \Modules\Profile\Models\Person::class);
 //        $this->app->alias(Helper::class, 'Core');
-
     }
 
     /**
@@ -64,7 +63,7 @@ class AppServiceProvider extends ServiceProvider {
         if (is_dir($modulesPath)) {
             $directories = scandir($modulesPath);
             foreach ($directories as $directory) {
-                if ($directory === 'Core' || $directory === 'Admin' || $directory === 'User') {
+                if ($directory === 'Core' || $directory === 'Admin' || $directory === 'Profile' || $directory === 'User') {
                     continue;
                 }
                 if ($directory !== '.' && $directory !== '..' && is_dir($modulesPath . '/' . $directory)) {
@@ -88,6 +87,11 @@ class AppServiceProvider extends ServiceProvider {
                     ]
             );
         }
+        $this->app->concord->registerModule(\Modules\Profile\Providers\ModuleServiceProvider::class,
+                $config = [
+            'routes' => false
+                ]
+        );
     }
 
 }
