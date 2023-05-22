@@ -34,7 +34,7 @@ class MakeModuleController extends Command {
         $fileName = $controllerName . '.php';
 
         // Generate the controller file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/controller.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/controller.stub');
         $stubContent = File::get($stubPath);
 
         $string = $stubContent;

@@ -4,8 +4,9 @@ namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Contracts\Menu as MenuContract;
 
-class Menu extends Model {
+class Menu extends Model implements MenuContract {
 
     protected $fillable = [
         'name',

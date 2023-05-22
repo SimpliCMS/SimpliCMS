@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\{{moduleName}}\Http\Controllers;
+namespace Modules\{{moduleName}}\Http\Controllers\Api;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
@@ -14,7 +14,7 @@ class {{controllerName}} extends Controller
      */
     public function index()
     {
-        return view('{{moduleNameLower}}::index');
+        
     }
 
     /**
@@ -23,7 +23,7 @@ class {{controllerName}} extends Controller
      */
     public function create()
     {
-        return view('{{moduleNameLower}}::create');
+        
     }
 
     /**
@@ -43,7 +43,7 @@ class {{controllerName}} extends Controller
      */
     public function show($id)
     {
-        return view('{{moduleNameLower}}::show');
+        
     }
 
     /**
@@ -53,7 +53,7 @@ class {{controllerName}} extends Controller
      */
     public function edit($id)
     {
-        return view('{{moduleNameLower}}::edit');
+        
     }
 
     /**

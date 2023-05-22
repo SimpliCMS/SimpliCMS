@@ -34,7 +34,7 @@ class MakeModuleProvider extends Command {
         $fileName = $providerName . '.php';
 
         // Generate the provider file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/provider.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/provider.stub');
         $stubContent = File::get($stubPath);
         $string = $stubContent;
         $search = array('{{moduleName}}', '{{providerName}}');

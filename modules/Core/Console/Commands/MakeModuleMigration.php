@@ -34,7 +34,7 @@ class MakeModuleMigration extends Command {
         $fileName = date('Y_m_d_His') . '_' . $migrationName . '.php';
 
         // Generate the migration file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/migration.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/migration.stub');
         $stubContent = File::get($stubPath);
         $string = $stubContent;
         $studlystring = $migrationName;

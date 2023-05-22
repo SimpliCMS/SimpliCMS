@@ -34,7 +34,7 @@ class MakeModuleSeed extends Command {
         $fileName = $seedName . '.php';
 
         // Generate the seed file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/seed.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/seed.stub');
         $stubContent = File::get($stubPath);
 
         $string = $stubContent;

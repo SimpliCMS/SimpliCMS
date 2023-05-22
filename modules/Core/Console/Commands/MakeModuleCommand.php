@@ -126,7 +126,7 @@ class MakeModuleCommand extends Command {
      * @return string
      */
     protected function getStub($stubName) {
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/' . $stubName);
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/' . $stubName);
         if (!File::exists($stubPath)) {
             $this->error("Stub [$stubName] not found.");
             return false;

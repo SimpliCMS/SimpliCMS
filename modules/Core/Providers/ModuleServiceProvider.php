@@ -5,10 +5,17 @@ namespace Modules\Core\Providers;
 use Konekt\Concord\BaseBoxServiceProvider;
 use Konekt\AppShell\Providers\SettingsProvider;
 use Illuminate\Support\Facades\DB;
+use Modules\Core\Models\Menu;
+use Modules\Core\Models\MenuItem;
+use Modules\Core\Models\Page;
 use Schema;
 
 class ModuleServiceProvider extends BaseBoxServiceProvider {
-
+    protected $models = [
+        Menu::class,
+        MenuItem::class,
+        Page::class,
+    ];
     /**
      * Bootstrap the module services.
      *

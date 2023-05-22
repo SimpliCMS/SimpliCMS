@@ -9,10 +9,10 @@ use Illuminate\Support\Str;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 
-class MakeModuleAdminController extends Command {
+class MakeModuleApiController extends Command {
 
-    protected $signature = 'core:module:make:admincontroller {moduleName : The name of the module} {controllerName : The name of the controller}';
-    protected $description = 'Create a new admin controller for a module';
+    protected $signature = 'core:module:make:apicontroller {moduleName : The name of the module} {controllerName : The name of the controller}';
+    protected $description = 'Create a new api controller for a module';
 
     public function handle() {
         $moduleName = $this->argument('moduleName');
@@ -25,7 +25,7 @@ class MakeModuleAdminController extends Command {
         }
 
         // Create the controllers directory if it doesn't exist
-        $controllerPath = base_path("modules/{$moduleName}/Http/Controllers/Admin");
+        $controllerPath = base_path("modules/{$moduleName}/Http/Controllers/Api");
         if (!File::isDirectory($controllerPath)) {
             File::makeDirectory($controllerPath, 0755, true);
         }
@@ -34,7 +34,7 @@ class MakeModuleAdminController extends Command {
         $fileName = $controllerName . '.php';
 
         // Generate the controller file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/admincontroller.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/apicontroller.stub');
         $stubContent = File::get($stubPath);
 
         $string = $stubContent;
@@ -49,7 +49,7 @@ class MakeModuleAdminController extends Command {
 
         $output = null;
 
-        $this->info("Admin Controller created successfully: {$fileName}");
+        $this->info("Api Controller created successfully: {$fileName}");
     }
 
 }

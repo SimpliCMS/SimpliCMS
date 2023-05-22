@@ -34,7 +34,7 @@ class MakeModuleModel extends Command {
         $fileName = $modelName . '.php';
 
         // Generate the controller file content using a stub
-        $stubPath = base_path('/modules/Core/Console/Commands/stubs/model.stub');
+        $stubPath = base_path('/modules/Core/Console/Commands/stubs/modules/model.stub');
         $stubContent = File::get($stubPath);
 
         $string = $stubContent;
