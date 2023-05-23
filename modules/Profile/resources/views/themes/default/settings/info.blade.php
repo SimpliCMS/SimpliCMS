@@ -58,6 +58,5 @@ flatpickr("input[type=text]", config);
             element.classList.add("active");
         };
     </script>
-
     @endpush
     @endsection

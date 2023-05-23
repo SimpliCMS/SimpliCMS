@@ -3,47 +3,47 @@
 namespace Modules\Core\Resources\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Modules\Core\Models\Menu;
-use Modules\Core\Models\MenuItem;
+use Modules\Core\Models\MenuProxy;
+use Modules\Core\Models\MenuItemProxy;
 
 class CoreMenus extends Seeder {
 
     public function run() {
-        $mainMenu = Menu::create([
+        $mainMenu = MenuProxy::create([
                     'name' => 'Main Menu',
                     'slug' => 'main-menu',
         ]);
 
-        $guestMenu = Menu::create([
+        $guestMenu = MenuProxy::create([
                     'name' => 'Guest Menu',
                     'slug' => 'guest-menu',
         ]);
 
-        $userMenu = Menu::create([
+        $userMenu = MenuProxy::create([
                     'name' => 'User Menu',
                     'slug' => 'user-menu',
         ]);
 
-        $footerMenu = Menu::create([
+        $footerMenu = MenuProxy::create([
                     'name' => 'Footer Menu',
                     'slug' => 'footer-menu',
         ]);
 
-        $homeMenuItem = MenuItem::create([
+        $homeMenuItem = MenuItemProxy::create([
                     "name" => 'Home',
                     "url" => 'home',
                     "menu_id" => $mainMenu->id,
                     'is_internal' => 1
         ]);
         
-        $privacyMenuItem = MenuItem::create([
+        $privacyMenuItem = MenuItemProxy::create([
                     "name" => 'Privacy',
                     "url" => '/page/privacy',
                     "menu_id" => $footerMenu->id,
                     'is_internal' => 0
         ]);
         
-         $termsMenuItem = MenuItem::create([
+         $termsMenuItem = MenuItemProxy::create([
                     "name" => 'Terms',
                     "url" => '/page/terms',
                     "menu_id" => $footerMenu->id,

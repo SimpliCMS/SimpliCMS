@@ -3,31 +3,31 @@
 namespace Modules\User\Resources\Database\Seeds;
 
 use Illuminate\Database\Seeder;
-use Modules\Core\Models\Menu;
-use Modules\Core\Models\MenuItem;
+use Modules\Core\Models\MenuProxy;
+use Modules\Core\Models\MenuItemProxy;
 
 class UserMenus extends Seeder {
 
     public function run() {
-        $guestMenu = Menu::where('name', 'Guest Menu')->first();
+        $guestMenu = MenuProxy::where('name', 'Guest Menu')->first();
 
-        $userMenu = Menu::where('name', 'User Menu')->first();
+        $userMenu = MenuProxy::where('name', 'User Menu')->first();
 
-        $loginMenuItem = MenuItem::create([
+        $loginMenuItem = MenuItemProxy::create([
                     "name" => 'Login',
                     "url" => 'login',
                     "menu_id" => $guestMenu->id,
                     'is_internal' => 1
         ]);
 
-        $registerMenuItem = MenuItem::create([
+        $registerMenuItem = MenuItemProxy::create([
                     "name" => 'Register',
                     "url" => 'register',
                     "menu_id" => $guestMenu->id,
                     'is_internal' => 1
         ]);
 
-        $adminMenuItem = MenuItem::create([
+        $adminMenuItem = MenuItemProxy::create([
                     "name" => 'Admin',
                     "url" => 'admin.index',
                     "permission" => 'access admin',
@@ -35,14 +35,14 @@ class UserMenus extends Seeder {
                     'is_internal' => 1
         ]);
 
-        $accountMenuItem = MenuItem::create([
+        $accountMenuItem = MenuItemProxy::create([
                     "name" => 'Account Menu',
                     "url" => '#',
                     "menu_id" => $userMenu->id,
                     'is_internal' => 0
         ]);
 
-        $accountsettingsMenuItem = MenuItem::create([
+        $accountsettingsMenuItem = MenuItemProxy::create([
                     "name" => 'Account Settings',
                     "url" => 'user.account',
                     "parent_id" => $accountMenuItem->id,
@@ -51,7 +51,7 @@ class UserMenus extends Seeder {
                     'is_internal' => 1
         ]);
 
-        $logoutMenuItem = MenuItem::create([
+        $logoutMenuItem = MenuItemProxy::create([
                     "name" => 'Logout',
                     "url" => 'logout',
                     "parent_id" => $accountMenuItem->id,
