@@ -72,23 +72,9 @@ class AdminSettingsServiceProvider extends ServiceProvider {
         }
 
         $ui->addRootNode('general', __('General Settings'))
-        ->addChildNode('general', 'general_app', __('Website'))
-        ->addSettingItem(
-        'general_app',
-        ['text', ['label' => __('Name')]],
-        UiNameSetting::KEY
-        );
+        ->addChildNode('general', 'general_app', __('Website'));
 
-        $ui->addChildNode('general', 'defaults', __('Defaults'))
-                ->addSettingItem(
-                        'defaults',
-                        ['select', ['label' => __('Default Country')]],
-                        'appshell.default.country'
-                )->addSettingItem(
-                'defaults',
-                ['select', ['label' => __('Default Currency')]],
-                'appshell.default.currency'
-        );
+        $ui->addChildNode('general', 'defaults', __('Defaults'));
 
         $this->settingsTreeIsBuilt = true;
     }
