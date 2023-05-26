@@ -1,13 +1,10 @@
 <?php
 
-namespace Modules\{module}\Providers;
+namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Konekt\Gears\Defaults\SimpleSetting;
-use Konekt\Gears\Facades\Settings;
-use Konekt\Gears\UI\TreeBuilder;
 
-class {module}SettingsServiceProvider extends ServiceProvider
+class UserPreferencesProvider extends ServiceProvider
 {
     
     /**
