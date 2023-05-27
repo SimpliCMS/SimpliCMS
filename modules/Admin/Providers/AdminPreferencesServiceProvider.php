@@ -4,7 +4,7 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class AdminPreferencesProvider extends ServiceProvider
+class AdminPreferencesServiceProvider extends ServiceProvider
 {
     
     /**

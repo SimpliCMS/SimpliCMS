@@ -58,6 +58,8 @@
                        href="{{ route('appshell.account.display') }}">{{  __('Account') }}</a>
                     <a class="dropdown-item"
                        href="{{ route('appshell.preferences.index') }}">{{  __('Preferences') }}</a>
+                    <a class="dropdown-item"
+                       href="{{ route('webmail.index') }}">{{  __('Webmail') }}</a>
                     <a class="dropdown-item" href="{{ route($appshell->routes['logout']) }}"
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         {{ __('Logout') }}

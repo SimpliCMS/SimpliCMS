@@ -17,6 +17,7 @@
         "spatie/laravel-tags": "^4.3",
         "laracasts/utilities": "^3.2",
         "kalnoy/nestedset": "^6.0",
+        "phpmailer/phpmailer": "^6.8",
         "tinymce/tinymce": "^6.4.2"
     },
     "extra": {

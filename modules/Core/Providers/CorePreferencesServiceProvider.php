@@ -4,7 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class CorePreferencesProvider extends ServiceProvider
+class CorePreferencesServiceProvider extends ServiceProvider
 {
     
     /**
