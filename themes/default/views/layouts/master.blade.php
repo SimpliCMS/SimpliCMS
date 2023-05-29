@@ -15,13 +15,13 @@
 
         <!-- Styles -->
         <link href="{{ themes('css/bootstrap.css') }}" rel="stylesheet">
+        @stack('style')
         <link href="{{ themes('css/custom.css') }}" rel="stylesheet">
-         @stack('style')
     </head>
     <body>
         <div id="app">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="{{ url('/') }}">{{ config('app.name', 'SimpliCMS') }}</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -42,20 +42,27 @@
                     </div>
                 </div>
             </nav>
-
-            <main class="py-2">
+            <main class="mt-1">
 
                 <div class="container">
-                    @yield('categories-menu')
-                    <nav aria-label="breadcrumb">
+                    @hasSection('categories-menu')
+                    <div class="mt-2">
+                        @yield('categories-menu')
+                    </div>
+                    @endif
+                    @hasSection('breadcrumbs')
+                    <nav class="mt-2" aria-label="breadcrumb">
                         <ol class="breadcrumb bg-transparent">
                             @yield('breadcrumbs')
                         </ol>
                     </nav>
+                    @endif
                     @include('flash::message')
                 </div>
 
-                @yield('content')
+                <div class="container-fluid">
+                    @yield('content')
+                </div>
             </main>
             @include('partials.layout._footer')
         </div>

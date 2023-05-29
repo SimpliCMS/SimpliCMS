@@ -34,31 +34,61 @@ a:hover, a:active, a:visited, a:link{
     text-decoration: none;
 }
 
+.container-fluid {
+    padding: 0px 3% 0px;
+}
+
 .login-reg-section {
-  padding: 0 0; }
+    padding: 0 0;
+}
 
 .login-reg-pt {
-  padding-top: 0; }
+    padding-top: 0;
+}
 
 .login-reg-pb {
-  padding-bottom: 0; }
+    padding-bottom: 0;
+}
 
 .login-reg-wrap {
-  position: relative;
-  background: #fff;
-  border-radius: 10px;
-  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24); }
-  .login-reg-wrap h3 {
-    font-weight: 300; }
-  .login-reg-wrap .icon {
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+}
+.login-reg-wrap h3 {
+    font-weight: 300;
+}
+.login-reg-wrap .icon {
     width: 80px;
     height: 80px;
     background: $primary;
     border-radius: 50%;
     font-size: 30px;
     margin: 0 auto;
-    margin-bottom: 10px; }
-    .login-reg-wrap .icon i {
-      color: #fff; }
+    margin-bottom: 10px;
+}
+.login-reg-wrap .icon i {
+    color: #fff;
+}
+
+.card {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: transparent; /* Remove background color */
+}
+
+.card-header h5 {
+    margin: 0;
+}

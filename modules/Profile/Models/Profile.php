@@ -4,11 +4,13 @@ namespace Modules\Profile\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Http;
 use Konekt\User\Models\Profile as ProfileModel;
 use Konekt\User\Models\UserProxy;
 use Modules\User\Models\User;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Laravolt\Avatar\Facade as Avatar;
 
 class Profile extends ProfileModel implements HasMedia {
 
@@ -38,7 +40,16 @@ class Profile extends ProfileModel implements HasMedia {
 
     public function getProfileAvatar() {
         if ($this->avatar_type != 'storage') {
-            $avatar = sprintf('%s%s%s', 'https://secure.gravatar.com/avatar/', md5(strtolower(trim($this->user->email))), '?s=200&d=retro');
+            $gravatarUrl = 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($this->user->email))) . '?s=200&d=404';
+
+            $response = Http::head($gravatarUrl);
+
+            if ($response->status() === 404) {
+                $avatar = Avatar::create($this->user->name)->setFontSize(200)->setDimension(500, 500)->toBase64();
+                return $avatar;
+            } else {
+                return $gravatarUrl;
+            }
         } else {
             $avatar = url($this->avatar_data);
         }

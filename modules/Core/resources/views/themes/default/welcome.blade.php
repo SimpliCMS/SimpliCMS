@@ -1,6 +1,5 @@
 @extends('layouts.welcome')
 @section('content')
-<div class="container">
     <div class="mb-4 bg-primary rounded-3">
             <div id="carouselExampleDark" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -58,5 +57,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
