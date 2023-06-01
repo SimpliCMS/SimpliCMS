@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Modules\Core\Helpers\Helper;
 use Modules\Core\Helpers\MediaUrlGenerator;
 use Spatie\MediaLibrary\Support\UrlGeneratorFactory;
+use Illuminate\Support\Facades\View;
 use Schema;
 use Menu;
 use Blade;
@@ -92,6 +93,7 @@ class AppServiceProvider extends ServiceProvider {
             'routes' => false
                 ]
         );
+//        View::addExtension('blade.js.php', 'php');
     }
 
 }
