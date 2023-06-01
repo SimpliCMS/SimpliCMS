@@ -9,6 +9,7 @@ use Modules\Core\Helpers\Helper;
 use Modules\Core\Helpers\MediaUrlGenerator;
 use Spatie\MediaLibrary\Support\UrlGeneratorFactory;
 use Illuminate\Support\Facades\View;
+use Laracasts\Utilities\JavaScript\JavaScriptFacade as JavaScript;
 use Schema;
 use Menu;
 use Blade;
@@ -30,6 +31,7 @@ class AppServiceProvider extends ServiceProvider {
         $this->app->concord->registerModel(\Konekt\User\Contracts\Profile::class, \Modules\Profile\Models\Profile::class);
         $this->app->concord->registerModel(\Konekt\Address\Contracts\Person::class, \Modules\Profile\Models\Person::class);
 //        $this->app->alias(Helper::class, 'Core');
+
     }
 
     /**
