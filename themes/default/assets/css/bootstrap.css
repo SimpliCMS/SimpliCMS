@@ -13472,6 +13472,17 @@ a:hover, a:active, a:visited, a:link {
   margin-bottom: 10px;
 }
 
+.card-icon {
+  width: 80px;
+  height: 80px;
+  color: #fff;
+  background: #0e58ac;
+  border-radius: 50%;
+  font-size: 30px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
 .card-header {
   display: -webkit-box;
   display: -ms-flexbox;

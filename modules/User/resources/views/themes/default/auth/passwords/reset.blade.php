@@ -7,7 +7,6 @@
         </div>
         <div class="row justify-content-center">
             <div class="col-md-7 col-lg-5">
-                <div class="login-reg-wrap p-4 p-md-5">
                     <div class="card border border-0">
                         <div class="icon d-flex align-items-center justify-content-center">
                             <i class="fa-solid fa-key" aria-hidden="true"></i>
@@ -48,7 +47,6 @@
                             </form>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
