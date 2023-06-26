@@ -7,88 +7,114 @@
 /*! `Custom` Bootstrap 5 theme */
 @import url(https://use.fontawesome.com/releases/v6.4.0/css/all.css);
 
-$enable-grid-classes:true;
-$primary:#0e58ac;
-$secondary:#6c757d;
-$success:#198754;
-$danger:#dc3545;
-$info:#0dcaf0;
-$warning:#ffc107;
-$light:#f8f9fa;
-$dark:#212529;
-$spacer:1rem;
-$border-width:1px;
-$btn-border-radius:.25rem;
+$enable-grid-classes: true;
+$primary: #0e58ac;
+$secondary: #6c757d;
+$success: #198754;
+$danger: #dc3545;
+$info: #0dcaf0;
+$warning: #ffc107;
+$light: #f8f9fa;
+$dark: #212529;
+$spacer: 1rem;
+$border-width: 1px;
+$btn-border-radius: .25rem;
 // bootstrap
 @import "bootstrap/bootstrap";
 
 // Add SASS theme customizations here..
 
-body, html {
-    height: 100%;
+@include color-mode(light) {
+  body, html {
+    min-height: 100vh;
     font-family: Montserrat-Regular, sans-serif;
     background-color: #f8fafc;
+  }
 }
 
-a:hover, a:active, a:visited, a:link{
-    text-decoration: none;
+@include color-mode(dark) {
+  body, html {
+    min-height: 100vh;
+    font-family: Montserrat-Regular, sans-serif;
+    background-color: #212529;
+  }
+}
+
+a:hover, a:active, a:visited, a:link {
+  text-decoration: none;
 }
 
 .container-fluid {
-    padding: 0px 3% 0px;
+  padding: 0px 3% 0px;
 }
 
 .login-reg-section {
-    padding: 0 0;
+  padding: 0 0;
 }
 
 .login-reg-pt {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .login-reg-pb {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 
-.login-reg-wrap {
+@include color-mode(light) {
+  .login-reg-wrap {
     position: relative;
     background: #fff;
     border-radius: 10px;
     -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
     -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
     box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  }
 }
+
+@include color-mode(dark) {
+  .login-reg-wrap {
+    position: relative;
+    background: #212529;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  }
+}
+
 .login-reg-wrap h3 {
-    font-weight: 300;
+  font-weight: 300;
 }
+
 .login-reg-wrap .icon {
-    width: 80px;
-    height: 80px;
-    background: $primary;
-    border-radius: 50%;
-    font-size: 30px;
-    margin: 0 auto;
-    margin-bottom: 10px;
+  width: 80px;
+  height: 80px;
+  background: $primary;
+  border-radius: 50%;
+  font-size: 30px;
+  margin: 0 auto;
+  margin-bottom: 10px;
 }
+
 .login-reg-wrap .icon i {
-    color: #fff;
+  color: #fff;
 }
 
 .card {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 10px;
 }
 
 .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    background-color: transparent; /* Remove background color */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: transparent; /* Remove background color */
 }
 
 .card-header h5 {
-    margin: 0;
+  margin: 0;
 }

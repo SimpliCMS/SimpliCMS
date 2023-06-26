@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="{{ themes('css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ themes('css/bootstrap.css.bk') }}" rel="stylesheet">
         <link href="{{ themes('css/custom.css') }}" rel="stylesheet">
         @stack('style')
         <style>

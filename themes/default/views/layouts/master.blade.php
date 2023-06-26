@@ -14,7 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
         <!-- Styles -->
-        <link href="{{ themes('css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ themes('css/bootstrap.css.bk') }}" rel="stylesheet">
         @stack('style')
         <link href="{{ themes('css/custom.css') }}" rel="stylesheet">
     </head>
@@ -33,10 +33,12 @@
                         @guest
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             @include('partials.menu.main', ['menuItems' => Core::getMenu('Guest Menu')])
+                            @include('partials.menu.dark-mode')
                         </ul>
                         @else
                         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                             @include('partials.menu.main', ['menuItems' => Core::getMenu('User Menu')])
+                            @include('partials.menu.dark-mode')
                         </ul>
                         @endguest
                     </div>
@@ -72,6 +74,7 @@
         <script src="{{ themes('js/alpine.js') }}"></script>
         <script src="{{ themes('js/jquery.js') }}"></script>
         <script src="{{ themes('js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ themes('js/color-modes.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
